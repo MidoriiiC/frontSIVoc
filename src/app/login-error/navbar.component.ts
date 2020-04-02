@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
     let user = { utilisateur: this.utilisateur.value, motDepasse: this.motDePasse.value }
     this.httpClient.post("/api/register", user).subscribe(res => {
       console.log('Succeeded');
-      //this.profile = res;
+      this.profile = res;
     }, err => {
       console.log('Error', err);
     });
