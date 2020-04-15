@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class NavbarComponent implements OnInit {
   private utilisateur = new FormControl('');
   public motDePasse = new FormControl('');
+  private profile;
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
@@ -19,9 +20,8 @@ export class NavbarComponent implements OnInit {
   seConnecter() {
     console.log('Utilisateur: ' + this.utilisateur.value + '\nMot de passe: ' + this.motDePasse.value);
     let user = { utilisateur: this.utilisateur.value, motDepasse: this.motDePasse.value }
-    this.httpClient.post("/api/register", user).subscribe(res => {
+    this.httpClient.post('http://127.0.0.1:8080/testPOST', user).subscribe(res => {
       console.log('Succeeded');
-      //this.profile = res;
     }, err => {
       console.log('Error', err);
     });
