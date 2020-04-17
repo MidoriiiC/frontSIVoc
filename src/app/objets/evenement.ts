@@ -1,4 +1,5 @@
 export class Evenement {
+  public id: number;
   public nom: string;
   public image: string;
   public lienVideo: string;

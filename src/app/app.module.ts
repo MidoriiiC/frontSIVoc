@@ -18,6 +18,11 @@ import { EvenementService } from './services/evenement.service';
 import { MatCardModule } from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list'; 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { EvenementCreationComponent } from './evenement-creation/evenement-creation.component';
+import {MatInputModule} from '@angular/material/input'; 
+import {MatDatepickerModule} from '@angular/material/datepicker'; 
+import {MatNativeDateModule} from '@angular/material/core';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +30,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HomeComponent,
     NavbarComponent,
     RegisterComponent,
-    EvenementComponent
+    EvenementComponent,
+    EvenementCreationComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +45,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatIconModule,
     MatCardModule,
     MatGridListModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [EvenementService],
   bootstrap: [AppComponent]

@@ -15,4 +15,10 @@ export class EvenementService {
   getEvenementParId(id: number): Observable<Evenement> {
     return this.http.get<Evenement>('http://127.0.0.1:8080/evenements/'+id);
   }
+  creerEvenement(evenement: Evenement): Observable<Evenement>{
+    return this.http.post<Evenement>('http://127.0.0.1:8080/evenements/creer', evenement);
+  }
+  modifierEvenement(evenement: Evenement): Observable<Evenement>{
+    return this.http.put<Evenement>('http://127.0.0.1:8080/evenements/'+evenement.id, evenement);
+  }
 }

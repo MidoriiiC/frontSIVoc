@@ -1,0 +1,39 @@
+<mat-card class="principal">
+	<mat-card-title>
+		{{titre}}
+	</mat-card-title>
+	<mat-card-content *ngIf="mode==0||evenement" class="formulaire">
+		<mat-form-field class="champ">
+    		<mat-label>Nom de l'évènement</mat-label>
+			<input matInput type="text" value="{{evenement.nom}}" [formControl]="nom" />
+		</mat-form-field><br />
+		<mat-form-field class="champ">
+			<mat-label>Lien de l'image d'illustration</mat-label>
+		<input matInput type="url" value="{{evenement.image}}" [formControl]="image" />
+		</mat-form-field><br />
+		<mat-form-field class="champ">
+			<mat-label>Lieu de l'évènement</mat-label>
+			<input matInput type="text" value="{{evenement.lieu}}" [formControl]="lieu" />
+		</mat-form-field><br />
+		<mat-form-field class="champ">
+			<mat-label>Nom de l'organisateur</mat-label>
+			<input matInput type="text" value="{{evenement.organisateur}}" [formControl]="organisateur" />
+		</mat-form-field><br />
+		<mat-form-field class="champ">
+  			<mat-label>Date</mat-label>
+  			<input matInput value="{{evenement.date}}" [matDatepicker]="picker" [formControl]="date">
+  			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  			<mat-datepicker #picker></mat-datepicker>
+		</mat-form-field><br />
+		<mat-form-field class="champ">
+			<mat-label>Heure</mat-label>
+			<input matInput type="time" value="{{evenement.heure}}" [formControl]="heure" />
+		</mat-form-field><br />
+		<mat-form-field class="champ">
+			<mat-label>Vidéo Youtube</mat-label>
+			<input matInput type="url" value="{{evenement.lienVideo}}" [formControl]="lienVideo" />
+		</mat-form-field><br />
+		<textarea class="champ" matInput value="{{evenement.contenuArticle}}" placeholder="Article descriptif de l'évènement" [formControl]="contenuArticle"></textarea><br />
+		<button mat-flat-button color="primary" (click)="creer()">Créer l'évènement</button>
+	</mat-card-content>
+</mat-card>
