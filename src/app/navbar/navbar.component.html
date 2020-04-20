@@ -1,15 +1,10 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row class="flexSpaceBetween"><!--Visiteur-->
-    <span></span>
-    <img mat-card-image src="alt.png" alt="Logo de SIVoc" class="center" />
-    <div>
+    <span>SIVoc</span>
+    <span class="example-spacer"></span>
+	<div>
       <button mat-raised-button color="primary">Sign in</button>
       <button mat-raised-button color="primary" routerLink="/register">Register</button>
-      <button mat-raised-flat-button color="primary"></button>
-      <button mat-raised-flat-button color="primary"></button>
     </div>
-    <input type="text" placeholder="Email" [formControl]="utilisateur">
-    <input type="password" placeholder="Password" [formControl]="motDePasse" />
-    <button (click)="seConnecter()">Sign in</button>
   </mat-toolbar-row>
 </mat-toolbar>

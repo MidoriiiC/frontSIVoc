@@ -22,6 +22,7 @@ import { EvenementCreationComponent } from './evenement-creation/evenement-creat
 import {MatInputModule} from '@angular/material/input'; 
 import {MatDatepickerModule} from '@angular/material/datepicker'; 
 import {MatNativeDateModule} from '@angular/material/core';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     NavbarComponent,
     RegisterComponent,
     EvenementComponent,
-    EvenementCreationComponent
+    EvenementCreationComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
