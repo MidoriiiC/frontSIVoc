@@ -1,5 +1,10 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <input type="text" placeholder="Email" [formControl]="utilisateur">
-  <input type="password" placeholder="Password" [formControl]="motDePasse" />
-  <button (click)="seConnecter()">Sign in</button>
-</nav>
+<mat-toolbar color="primary">
+  <mat-toolbar-row class="flexSpaceBetween"><!--Visiteur-->
+    <span>SIVoc</span>
+    <span class="example-spacer"></span>
+	<div>
+      <button mat-raised-button color="primary">Sign in</button>
+      <button mat-raised-button color="primary" routerLink="/register">Register</button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
