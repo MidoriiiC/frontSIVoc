@@ -12,16 +12,16 @@ import { EvenementService } from '../services/evenement.service';
 export class EvenementCreationComponent implements OnInit {
 
 
-    private nom = new FormControl('');
-    private contenuArticle = new FormControl('');
-    private image = new FormControl('');
-    private lienVideo = new FormControl('');
-    private date = new FormControl('');
-    private heure = new FormControl('');
-    private lieu = new FormControl('');
-    private organisateur = new FormControl('');
+    protected nom = new FormControl('');
+    protected contenuArticle = new FormControl('');
+    protected image = new FormControl('');
+    protected lienVideo = new FormControl('');
+    protected date = new FormControl('');
+    protected heure = new FormControl('');
+    protected lieu = new FormControl('');
+    protected organisateur = new FormControl('');
 
-    private mode: number;
+    protected mode: number;
     protected evenement = new Evenement();
     protected titre = '';
 

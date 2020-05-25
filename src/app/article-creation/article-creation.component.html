@@ -1,0 +1,27 @@
+<mat-card class="main">
+	<mat-card-title>
+		{{titre}}
+	</mat-card-title>
+	<mat-card-content *ngIf="mode==0||article" class="formulaire">
+		<mat-form-field class="field">
+    		<mat-label>Nom de l'article</mat-label>
+			<input matInput type="text" value="{{article.title}}" [formControl]="title" />
+		</mat-form-field><br />
+		<mat-form-field class="field">
+			<mat-label>Nom de l'auteur</mat-label>
+			<input matInput type="text" value="{{article.author}}" [formControl]="author" />
+		</mat-form-field><br />
+		<mat-form-field class="field">
+  			<mat-label>Date</mat-label>
+  			<input matInput value="{{article.date}}" [matDatepicker]="picker" [formControl]="date">
+  			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  			<mat-datepicker #picker></mat-datepicker>
+		</mat-form-field><br />
+		<mat-form-field class="field">
+			<mat-label>Heure</mat-label>
+			<input matInput type="time" value="{{article.hour}}" [formControl]="hour" />
+		</mat-form-field><br />
+		<textarea class="field" matInput value="{{article.content}}" placeholder="Contenu de l'article'" [formControl]="content"></textarea><br />
+		<button mat-flat-button color="primary" (click)="create()">Créer l'article</button>
+	</mat-card-content>
+</mat-card>
