@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
     private nom = new FormControl('');
     private prenom = new FormControl('');
     private email = new FormControl('');
-    private motdepasse = new FormControl('');
+    private mdp = new FormControl('');
 
     private mode: number;
     protected utilisateur = new Utilisateur();
@@ -37,14 +37,15 @@ export class RegisterComponent implements OnInit {
       aCreer.nom = this.nom.value;
       aCreer.prenom = this.prenom.value;
       aCreer.email = this.email.value;
-      aCreer.motdepasse = this.motdepasse.value;
-      console.log("hello");
+      aCreer.mdp = this.mdp.value;
+      console.log(this.mdp.value)
+      console.log(aCreer.nom + " et " + aCreer.mdp);
       if (this.mode === 0) {
         this.utilisateurService.creerUtilisateur(aCreer).subscribe(data => {
           this.router.navigate(['/'])
         }, err => {
           // TODO une fois que les erreurs seront gérées dans le back (prochaine phase)
-          console.log("hello");
+          console.log("erreur d'enregistrement");
         });
       } else {
         aCreer.id = this.utilisateur.id;
@@ -63,7 +64,7 @@ export class RegisterComponent implements OnInit {
         this.nom.setValue(this.utilisateur.nom);
         this.prenom.setValue(this.utilisateur.prenom);
         this.email.setValue(this.utilisateur.email);
-        this.motdepasse.setValue(this.utilisateur.motdepasse);
+        this.mdp.setValue(this.utilisateur.mdp);
         console.log(data);
       });
     }

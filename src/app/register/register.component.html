@@ -2,7 +2,7 @@
 	<mat-card-title>
 		{{titre}}
 	</mat-card-title>
-	<mat-card-content *ngIf="mode==0||evenement" class="formulaire">
+	<mat-card-content class="formulaire">
 		<mat-form-field class="champ">
     		<mat-label>Nom</mat-label>
 			<input matInput type="text" value="{{utilisateur.nom}}" [formControl]="nom" />
@@ -13,11 +13,11 @@
 		</mat-form-field><br />
 		<mat-form-field class="champ">
 			<mat-label>Email</mat-label>
-			<input matInput type="text" value="{{utilisateur.email}}" [formControl]="email" />
+		<input matInput type="text" value="{{utilisateur.email}}" [formControl]="email" />
 		</mat-form-field><br />
 		<mat-form-field class="champ">
 			<mat-label>Mot de passe</mat-label>
-			<input matInput type="password" value="{{utilisateur.motdepasse}}" [formControl]="organisateur" />
+			<input matInput type="password" value="{{utilisateur.mdp}}" [formControl]="mdp" />
 		</mat-form-field><br />
 		<button mat-flat-button color="primary" (click)="creer()">Créer le compte</button>
 	</mat-card-content>
