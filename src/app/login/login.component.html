@@ -1,0 +1,21 @@
+<mat-card class="principal">
+	<mat-card-title>
+		{{titre}}
+	</mat-card-title>
+	<mat-card-content class="formulaire" [formGroup]="loginForm">
+
+		<mat-form-field class="form-group">
+    		<mat-label for="nom">Nom</mat-label>
+			<input matInput formControlName="nom" class="form-control" type="text" value=""/>
+		</mat-form-field>
+		<br/>
+
+		<mat-form-field class="form-group">
+			<mat-label for="mdp">Mot de passe</mat-label>
+			<input matInput formControlName="mdp" class="form-control" type="password" value=""/>
+		</mat-form-field>
+		<br/>
+
+		<button mat-flat-button color="primary" (click)="connexion()">Se connecter</button>
+	</mat-card-content>
+</mat-card>

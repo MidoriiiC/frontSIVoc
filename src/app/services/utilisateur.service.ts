@@ -9,8 +9,8 @@ import { Utilisateur } from '../objets/utilisateur';
 export class UtilisateurService {
   constructor(private http: HttpClient) { }
 
-  getUtilisateur (): Observable<any> {  //back non fini
-    return this.http.get('http://127.0.0.1:8080/connexion/infos');
+  getUtilisateur(nom: string, mdp: string): Observable<Utilisateur> {  //back non fini
+    return this.http.get<Utilisateur>('http://127.0.0.1:8080/connexion');
   }
   getUtilisateurParId(id: number): Observable<Utilisateur> {
     return this.http.get<Utilisateur>('http://127.0.0.1:8080/evenements/'+id);
@@ -20,5 +20,8 @@ export class UtilisateurService {
   }
   modifierUtilisateur(utilisateur: Utilisateur): Observable<Utilisateur>{
     return this.http.put<Utilisateur>('http://127.0.0.1:8080/utilisateur/'+utilisateur.id, utilisateur);
+  }
+  getInfoUtilisateur ():Observable<any> {
+    return this.http.get('http://127.0.0.1:8080/connexion/infos');
   }
 }

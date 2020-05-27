@@ -2,9 +2,11 @@
   <mat-toolbar-row class="flexSpaceBetween"><!--Visiteur-->
     <span routerLink="/">SIVoc</span>
     <span class="example-spacer"></span>
-	<div>
-      <button mat-raised-button color="primary">Sign in</button>
+    <div>
+      <button mat-raised-button color="primary" routerLink="/infoCompte">info</button>
+      <button mat-raised-button color="primary" routerLink="/login">Sign in</button>
       <button mat-raised-button color="primary" routerLink="/register">Register</button>
+      <button mat-raised-button color="primary" (click)="logout()">Out</button>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>

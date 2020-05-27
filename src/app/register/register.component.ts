@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Utilisateur } from '../objets/utilisateur';
 import { UtilisateurService } from '../services/utilisateur.service';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-register',
@@ -16,6 +17,7 @@ export class RegisterComponent implements OnInit {
     private email = new FormControl('');
     private mdp = new FormControl('');
 
+    private authenticationService: AuthenticationService;
     private mode: number;
     protected utilisateur = new Utilisateur();
     protected titre = '';

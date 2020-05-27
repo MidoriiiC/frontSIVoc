@@ -1,0 +1,35 @@
+<mat-card class="principal">
+	<mat-card-title>
+		{{titre}}
+	</mat-card-title>
+	<mat-card-content *ngIf="mode==0">
+
+		<mat-form-field class="champ">
+            <mat-label>Nom</mat-label>
+            <mat-span type="text" value="{{utilisateur.nom}}"></mat-span>
+        </mat-form-field><br/>
+        
+		<mat-form-field class="champ">
+			<mat-label>Prenom</mat-label>
+		    <mat-span type="text" value="{{utilisateur.prenom}}"></mat-span>
+        </mat-form-field><br/>
+        
+		<mat-form-field class="champ">
+			<mat-label>Lieu de l'évènement</mat-label>
+			<mat-span type="text" value="{{utilisateur.role}}"></mat-span>"
+        </mat-form-field><br/> 
+    </mat-card-content>
+    
+
+    <mat-card-content *ngIf="mode==1" class="formulaire">
+
+		<mat-form-field class="champ">
+            <mat-label>Utilisateur non connecté</mat-label>
+        </mat-form-field>
+    </mat-card-content>
+
+
+
+
+
+</mat-card>

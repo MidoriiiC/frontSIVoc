@@ -1,7 +1,8 @@
 export class Utilisateur {
-  public id: number;
-  public nom: string;
-  public prenom: string;
-  public email: string;
-  public mdp: string;
+  id: number;
+  nom: string;
+  mdp: string;
+  prenom: string;
+  email: string;
+  token: string;
 }

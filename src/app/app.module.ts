@@ -9,7 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { EvenementComponent } from './evenement/evenement.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -25,6 +25,13 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { FooterComponent } from './footer/footer.component';
 
 
+import { appRoutingModule } from './app.routing';
+import { JwtInterceptor } from './config/jwt.interceptor';
+import { ErrorInterceptor } from './config/error.interceptor'
+import { LoginComponent } from './login/login.component';
+import { AlertComponent } from './alert/alert.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +40,12 @@ import { FooterComponent } from './footer/footer.component';
     RegisterComponent,
     EvenementComponent,
     EvenementCreationComponent,
-    FooterComponent
+    FooterComponent,
+    AppComponent,
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -50,9 +62,18 @@ import { FooterComponent } from './footer/footer.component';
     FontAwesomeModule,
     MatInputModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    BrowserModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    appRoutingModule
   ],
-  providers: [EvenementService],
+  providers: [
+    EvenementService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+
+  export class AppModule { };
