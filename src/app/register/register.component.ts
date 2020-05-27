@@ -20,11 +20,14 @@ export class RegisterComponent implements OnInit {
     protected utilisateur = new Utilisateur();
     protected titre = '';
     
-    constructor(private utilisateurService: UtilisateurService, private route: ActivatedRoute, private router: Router) {
+    constructor(private utilisateurService: UtilisateurService,  private route: ActivatedRoute, private router: Router) {
       if (!this.route.snapshot.paramMap.get('id')) {
         this.mode = 0;
         console.log('creation');
         this.titre = 'Création de compte'
+        if (this.authenticationService.currentUserValue) {
+          this.router.navigate(['/']);
+      }
       } else {
         this.mode = 1;
         this.getUtilisateur();
