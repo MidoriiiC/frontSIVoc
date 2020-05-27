@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
             nom: ['', Validators.required],
             mdp: ['', Validators.required]
         });
-        console.log("hello");
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }

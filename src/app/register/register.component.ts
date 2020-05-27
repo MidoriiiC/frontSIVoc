@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Utilisateur } from '../objets/utilisateur';
 import { UtilisateurService } from '../services/utilisateur.service';
@@ -12,17 +12,24 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 export class RegisterComponent implements OnInit {
 
+    registerForm: FormGroup; 
     private nom = new FormControl('');
     private prenom = new FormControl('');
     private email = new FormControl('');
     private mdp = new FormControl('');
 
-    private authenticationService: AuthenticationService;
     private mode: number;
     protected utilisateur = new Utilisateur();
     protected titre = '';
     
-    constructor(private utilisateurService: UtilisateurService,  private route: ActivatedRoute, private router: Router) {
+    constructor(
+      private utilisateurService: UtilisateurService,
+      private route: ActivatedRoute,
+      private formBuilder: FormBuilder,
+      private authenticationService: AuthenticationService,
+      private router: Router
+      ) {
+
       if (!this.route.snapshot.paramMap.get('id')) {
         this.mode = 0;
         console.log('creation');
@@ -38,6 +45,9 @@ export class RegisterComponent implements OnInit {
      }
   
     creer(){
+
+      
+      
       let aCreer = new Utilisateur();
       aCreer.nom = this.nom.value;
       aCreer.prenom = this.prenom.value;
@@ -75,6 +85,13 @@ export class RegisterComponent implements OnInit {
     }
   
     ngOnInit() {
+      this.registerForm = this.formBuilder.group({
+        nom: ['', Validators.required],
+        prenom: ['', Validators.required],
+        email: ['', Validators.required],
+        mdp: ['', Validators.required]
+    });
+
     }
 
 }

@@ -2,16 +2,16 @@
 	<mat-card-title>
 		{{titre}}
 	</mat-card-title>
-	<mat-card-content class="formulaire" [formGroup]="loginForm">
+	<mat-card-content [formGroup]="loginForm" class="formulaire" >
 
 		<mat-form-field class="form-group">
-    		<mat-label for="nom">Nom</mat-label>
+    		<mat-label>Nom</mat-label>
 			<input matInput formControlName="nom" class="form-control" type="text" value=""/>
 		</mat-form-field>
 		<br/>
 
 		<mat-form-field class="form-group">
-			<mat-label for="mdp">Mot de passe</mat-label>
+			<mat-label>Mot de passe</mat-label>
 			<input matInput formControlName="mdp" class="form-control" type="password" value=""/>
 		</mat-form-field>
 		<br/>
