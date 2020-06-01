@@ -23,6 +23,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker'; 
 import {MatNativeDateModule} from '@angular/material/core';
 import { FooterComponent } from './footer/footer.component';
+import { ArticleComponent } from './article/article.component';
+import { ArticleCreationComponent } from './article-creation/article-creation.component';
 
 
 import { appRoutingModule } from './app.routing';
@@ -45,7 +47,9 @@ import { AlertComponent } from './alert/alert.component';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    AlertComponent
+    AlertComponent,
+    ArticleComponent,
+    ArticleCreationComponent
   ],
   imports: [
     BrowserModule,

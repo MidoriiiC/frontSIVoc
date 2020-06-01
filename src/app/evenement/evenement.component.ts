@@ -22,7 +22,7 @@ export class EvenementComponent implements OnInit {
   faClock = faClock;
   faCalendar = faCalendar;
   constructor(private evenementService: EvenementService, private route: ActivatedRoute,
-      private sanitizer: DomSanitizer) { }
+      protected sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.getEvenement();
