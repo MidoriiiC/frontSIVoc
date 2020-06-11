@@ -41,7 +41,7 @@
 		<ul>
 			<li *ngFor="let v of evenement.volontaires">
 				<span *ngIf="v.volunteer">{{v.label}}: {{v.volunteer.nom}}</span>
-				<button *ngIf="!v.volunteer" (click)="ajouterVolontaire(v)">Se proposer comme volontaire</button>
+				<span *ngIf="!v.volunteer">{{v.label}}: <button (click)="ajouterVolontaire(v)">Se proposer comme volontaire</button></span>
 			</li>
 		</ul>
 	</div>

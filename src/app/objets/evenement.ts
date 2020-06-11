@@ -1,3 +1,5 @@
+import { Volunteering } from './volunteering';
+
 export class Evenement {
   public id: number;
   public nom: string;
@@ -8,5 +10,5 @@ export class Evenement {
   public heure: string;
   public organisateur: string;
   public lieu: string;
-  //public volontaires: ArrayList<Volunteering>;
+  public volontaires: Array<Volunteering>;
 }
