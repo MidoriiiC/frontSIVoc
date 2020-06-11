@@ -8,4 +8,5 @@ export class Evenement {
   public heure: string;
   public organisateur: string;
   public lieu: string;
+  //public volontaires: ArrayList<Volunteering>;
 }

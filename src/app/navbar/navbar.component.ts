@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService,
+    protected authenticationService: AuthenticationService,
     private alertService: AlertService
 ) {
     // redirect to home if already logged in

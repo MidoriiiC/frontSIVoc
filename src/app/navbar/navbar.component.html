@@ -1,12 +1,13 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row class="flexSpaceBetween"><!--Visiteur-->
-    <span routerLink="/">SIVoc</span>
+    <a routerLink="/">SIVoc</a>
     <span class="example-spacer"></span>
     <div>
+	  <span *ngIf="authenticationService.currentUserValue">{{authenticationService.currentUserValue.nom}}</span>
       <button mat-raised-button color="primary" routerLink="/infoCompte">info</button>
-      <button mat-raised-button color="primary" routerLink="/login">Sign in</button>
-      <button mat-raised-button color="primary" routerLink="/register">Register</button>
-      <button mat-raised-button color="primary" (click)="logout()">Out</button>
+      <button *ngIf="!authenticationService.currentUserValue" mat-raised-button color="primary" routerLink="/login">Sign in</button>
+      <button *ngIf="!authenticationService.currentUserValue" mat-raised-button color="primary" routerLink="/register">Register</button>
+      <button *ngIf="authenticationService.currentUserValue" mat-raised-button color="primary" (click)="logout()">Out</button>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>

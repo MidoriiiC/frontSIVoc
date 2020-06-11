@@ -39,4 +39,8 @@ export class EvenementComponent implements OnInit {
       this.urlVideo = this.sanitizer.bypassSecurityTrustResourceUrl(this.evenement.lienVideo);
   }
 
+  ajouterVolontaire(volontariat){
+	//this.evenementService.ajouterVolontaire(volontariat);
+  }
+
 }

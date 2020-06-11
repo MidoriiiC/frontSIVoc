@@ -37,4 +37,12 @@
 		<p>{{evenement.contenuArticle}}</p>
 		<iframe mat-card-image *ngIf="evenement.lienVideo" width="560" height="315" [src]="sanitizer.bypassSecurityTrustResourceUrl(evenement.lienVideo)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	</mat-card-content>
+	<div *ngIf="evenement.volontaires">
+		<ul>
+			<li *ngFor="let v of evenement.volontaires">
+				<span *ngIf="v.volunteer">{{v.label}}: {{v.volunteer.nom}}</span>
+				<button *ngIf="!v.volunteer" (click)="ajouterVolontaire(v)">Se proposer comme volontaire</button>
+			</li>
+		</ul>
+	</div>
 </mat-card>
