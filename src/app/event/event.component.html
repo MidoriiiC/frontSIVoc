@@ -1,0 +1,48 @@
+<mat-card *ngIf="event" class="main">
+	<mat-card-title>{{event.name}}</mat-card-title>	
+	<img *ngIf="event.image" height="300px" src="{{event.image}}" alt="Image indisponible" />
+	<mat-grid-list cols="4" rowHeight="32px" class="infos">
+		<mat-card-subtitle>
+		<mat-grid-tile class="info"
+      [colspan]="4"
+	  [rowspan]="1"
+	  >
+	  <fa-icon [icon]="faMapMarker" class="indicator"></fa-icon>
+	  {{event.place}}
+  </mat-grid-tile>
+    <mat-grid-tile
+      [colspan]="4"
+      [rowspan]="1"
+	  >
+	  <fa-icon [icon]="faCalendar" class="indicator"></fa-icon>
+	  {{event.date}}
+  </mat-grid-tile>
+    <mat-grid-tile
+      [colspan]="4"
+      [rowspan]="1"
+	  >
+	  <fa-icon [icon]="faClock" class="indicator"></fa-icon>
+	  {{event.hour}}
+  </mat-grid-tile>
+    <mat-grid-tile
+      [colspan]="4"
+      [rowspan]="1"
+	  >
+	  <fa-icon [icon]="faUser" class="indicator"></fa-icon>
+	  {{event.organizer}}
+  </mat-grid-tile>
+  </mat-card-subtitle>
+</mat-grid-list>
+	<mat-card-content>
+		<p>{{event.contentArticle}}</p>
+		<iframe mat-card-image *ngIf="event.linkVideo" width="560" height="315" [src]="sanitizer.bypassSecurityTrustResourceUrl(event.linkVideo)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	</mat-card-content>
+	<div *ngIf="event.volunteerings">
+		<ul>
+			<li *ngFor="let v of event.volunteerings">
+				<span *ngIf="v.volunteer">{{v.label}}: {{v.volunteer.nom}}</span>
+				<span *ngIf="!v.volunteer">{{v.label}}: <button (click)="addVolunteer(v)">Se proposer comme volontaire</button></span>
+			</li>
+		</ul>
+	</div>
+</mat-card>

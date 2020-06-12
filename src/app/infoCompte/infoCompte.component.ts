@@ -1,25 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Evenement } from '../objets/evenement';
-import { EvenementService } from '../services/evenement.service';
+import { Event } from '../objets/event';
+import { EventService } from '../services/event.service';
 import { Utilisateur } from '../objets/utilisateur';
 
 @Component({
-  selector: 'app-evenement-creation',
-  templateUrl: './evenement-creation.component.html',
-  styleUrls: ['./evenement-creation.component.scss']
+  selector: 'app-info-compte',
+  templateUrl: './infoCompte.component.html',
+  styleUrls: ['./infoCompte.component.scss']
 })
-export class EvenementCreationComponent implements OnInit {
+export class EventCreationComponent implements OnInit {
     private nom = new FormControl('');
     private lieu = new FormControl('');
     private organisateur = new FormControl('');
 
     private mode: number;
-    protected evenement = new Evenement();
+    protected event = new Event();
     protected titre = '';
 
-  constructor(private evenementService: EvenementService, private route: ActivatedRoute, private router: Router) {
+  constructor(private eventService: EventService, private route: ActivatedRoute, private router: Router) {
     
 }
 
