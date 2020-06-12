@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RegisterComponent } from './register/register.component';
-import { EvenementComponent } from './evenement/evenement.component';
+import { EventComponent } from './event/event.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -14,11 +14,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
-import { EvenementService } from './services/evenement.service';
+import { EventService } from './services/event.service';
 import { MatCardModule } from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list'; 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { EvenementCreationComponent } from './evenement-creation/evenement-creation.component';
+import { EventCreationComponent } from './event-creation/event-creation.component';
 import {MatInputModule} from '@angular/material/input'; 
 import {MatDatepickerModule} from '@angular/material/datepicker'; 
 import {MatNativeDateModule} from '@angular/material/core';
@@ -41,8 +41,8 @@ import { AlertComponent } from './alert/alert.component';
     HomeComponent,
     NavbarComponent,
     RegisterComponent,
-    EvenementComponent,
-    EvenementCreationComponent,
+    EventComponent,
+    EventCreationComponent,
     FooterComponent,
     AppComponent,
     HomeComponent,
@@ -75,7 +75,7 @@ import { AlertComponent } from './alert/alert.component';
     appRoutingModule
   ],
   providers: [
-    EvenementService,
+    EventService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },],
   bootstrap: [AppComponent]
