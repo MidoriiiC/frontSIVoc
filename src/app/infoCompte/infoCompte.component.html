@@ -3,22 +3,22 @@
 
 
 <div class="principal">
-	<span> Nom: {{currentUser.nom}} ,</span><br/>
-	<span> Prenom: {{currentUser.prenom}} ,</span><br/>
-	<span> Id: {{currentUser.id}} ,</span><br/>
-	<span> Email: {{currentUser.email}} ,</span><br/>
-	<span> Mdp: {{currentUser.mdp}} ,</span><br/>
-	<span> Token: {{currentUser.token}} ,</span><br/>
-	<span> Role: {{currentUser.role}}</span><br/>
+    <span> Nom: {{currentUser.nom}} ,</span><br/>
+    <span> Prenom: {{currentUser.prenom}} ,</span><br/>
+    <span> Id: {{currentUser.id}} ,</span><br/>
+    <span> Email: {{currentUser.email}} ,</span><br/>
+    <span> Mdp: {{currentUser.mdp}} ,</span><br/>
+    <span> Token: {{currentUser.token}} ,</span><br/>
+    <span> Role: {{currentUser.role}}</span><br/>
 
-	<br/>
-	<span>	- - - - - - - - - - - - - - -</span>
+    <br/>
+    <span>    - - - - - - - - - - - - - - -</span>
 
-	<ul>
-		<li *ngFor="let user of users">
-			{{user.username}} ({{user.firstName}} {{user.lastName}}) {{user.role}}
-			- <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
-		</li>
-	</ul>
-	
+    <ul>
+        <li *ngFor="let user of users">
+            {{user.username}} ({{user.firstName}} {{user.lastName}}) {{user.role}}
+            - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+        </li>
+    </ul>
+
 </div>
