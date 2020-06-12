@@ -9,7 +9,7 @@ import { Utilisateur } from '../objets/utilisateur';
 export class UtilisateurService {
   constructor(private http: HttpClient) { }
 
-  getUtilisateur(nom: string, mdp: string): Observable<Utilisateur> {  //back non fini
+  getUtilisateur(nom: string, mdp: string): Observable<Utilisateur> {
     return this.http.get<Utilisateur>('http://127.0.0.1:8080/connexion');
   }
   getUtilisateurParId(id: number): Observable<Utilisateur> {
@@ -20,6 +20,13 @@ export class UtilisateurService {
   }
   modifierUtilisateur(utilisateur: Utilisateur): Observable<Utilisateur>{
     return this.http.put<Utilisateur>('http://127.0.0.1:8080/utilisateur/'+utilisateur.id, utilisateur);
+  }
+  getAll():Observable<any> {
+    return this.http.get<Utilisateur[]>('http://127.0.0.1:8000/utilisateur');
+  }
+  delete(id: number){
+    //return this.http.put<Utilisateur>('http://127.0.0.1:8080/utilisateur/'+utilisateur.id
+    return this.http.delete('aaaa');
   }
   getInfoUtilisateur ():Observable<any> {
     return this.http.get('http://127.0.0.1:8080/connexion/infos');

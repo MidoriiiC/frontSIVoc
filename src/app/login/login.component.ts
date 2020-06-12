@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../services/authentication.service';
 import { AlertService } from '../services/alert.service';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
         private router: Router,
         private authenticationService: AuthenticationService,
         private alertService: AlertService
-    ) {
+        ) {
         // redirect to home if already logged in
         if (this.authenticationService.currentUserValue) {
             this.router.navigate(['/']);
@@ -39,7 +40,7 @@ export class LoginComponent implements OnInit {
     get f() { return this.loginForm.controls; }
 
     connexion() {
-        console.log("début de la démarche");
+        console.log("début de la connexion");
         this.submitted = true;
 
         // reset alerts on submit
@@ -62,4 +63,5 @@ export class LoginComponent implements OnInit {
                     this.loading = false;
                 });
     }
+
 }

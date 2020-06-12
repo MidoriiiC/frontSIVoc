@@ -1,40 +1,39 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Evenement } from '../objets/evenement';
-import { EvenementService } from '../services/evenement.service';
 import { Utilisateur } from '../objets/utilisateur';
+import { AuthenticationService } from '../services/authentication.service';
+import { UtilisateurService } from '../services/utilisateur.service';
+import { first } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
-@Component({
-  selector: 'app-evenement-creation',
-  templateUrl: './evenement-creation.component.html',
-  styleUrls: ['./evenement-creation.component.scss']
-})
-export class EvenementCreationComponent implements OnInit {
-    private nom = new FormControl('');
-    private lieu = new FormControl('');
-    private organisateur = new FormControl('');
+@Component({ templateUrl: 'infoCompte.component.html' })
 
-    private mode: number;
-    protected evenement = new Evenement();
-    protected titre = '';
+export class InfoCompteComponent implements OnInit {
+  currentUser: Utilisateur;
+  users = [];
 
-  constructor(private evenementService: EvenementService, private route: ActivatedRoute, private router: Router) {
-    
-}
-
-  
-
-  ngOnInit() {
-    if(localStorage.getItem('currentUser')!=null){
-        let utilisateur = JSON.parse(localStorage.getItem('currentUser'));
-        console.log(utilisateur.nom);
-        this.mode = 0
-    }
-    else{
-        console.log("non connecté")
-        this.mode = 1;
-    }
+  constructor(
+    private authenticationService: AuthenticationService,
+    private router: Router,
+    private utilisateurService: UtilisateurService
+) {
+    this.currentUser = this.authenticationService.currentUserValue;
+    if (!this.authenticationService.currentUserValue) {
+      this.router.navigate(['/']);
+  }
+}ngOnInit() {
+  if(this.currentUser.role==="ROLE_MODERATEUR")
+    this.loadAllUsers();
   }
 
+  deleteUser(id: number) {
+    this.utilisateurService.delete(id)
+      .pipe(first())
+      .subscribe(() => this.loadAllUsers());
+  }
+
+  private loadAllUsers() {
+    this.utilisateurService.getAll()
+      .pipe(first())
+      .subscribe(users => this.users = users);
+  }
 }

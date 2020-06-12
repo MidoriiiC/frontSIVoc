@@ -1,35 +1,24 @@
-<mat-card class="principal">
-	<mat-card-title>
-		{{titre}}
-	</mat-card-title>
-	<mat-card-content *ngIf="mode==0">
-
-		<mat-form-field class="champ">
-            <mat-label>Nom</mat-label>
-            <mat-span type="text" value="{{utilisateur.nom}}"></mat-span>
-        </mat-form-field><br/>
-        
-		<mat-form-field class="champ">
-			<mat-label>Prenom</mat-label>
-		    <mat-span type="text" value="{{utilisateur.prenom}}"></mat-span>
-        </mat-form-field><br/>
-        
-		<mat-form-field class="champ">
-			<mat-label>Lieu de l'évènement</mat-label>
-			<mat-span type="text" value="{{utilisateur.role}}"></mat-span>"
-        </mat-form-field><br/> 
-    </mat-card-content>
-    
-
-    <mat-card-content *ngIf="mode==1" class="formulaire">
-
-		<mat-form-field class="champ">
-            <mat-label>Utilisateur non connecté</mat-label>
-        </mat-form-field>
-    </mat-card-content>
+<h1>Bonjour {{currentUser.prenom}}!</h1>
+<h3>Voici les infos enregistrées de ton compte:</h3>
 
 
+<div class="principal">
+	<span> Nom: {{currentUser.nom}} ,</span><br/>
+	<span> Prenom: {{currentUser.prenom}} ,</span><br/>
+	<span> Id: {{currentUser.id}} ,</span><br/>
+	<span> Email: {{currentUser.email}} ,</span><br/>
+	<span> Mdp: {{currentUser.mdp}} ,</span><br/>
+	<span> Token: {{currentUser.token}} ,</span><br/>
+	<span> Role: {{currentUser.role}}</span><br/>
 
+	<br/>
+	<span>	- - - - - - - - - - - - - - -</span>
 
-
-</mat-card>
+	<ul>
+		<li *ngFor="let user of users">
+			{{user.username}} ({{user.firstName}} {{user.lastName}}) {{user.role}}
+			- <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+		</li>
+	</ul>
+	
+</div>

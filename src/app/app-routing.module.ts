@@ -7,6 +7,7 @@ import { EvenementCreationComponent } from './evenement-creation/evenement-creat
 import { ArticleComponent } from './article/article.component';
 import { ArticleCreationComponent } from './article-creation/article-creation.component';
 import { AuthGuard} from './config/auth.guard';
+import { InfoCompteComponent } from './infoCompte/infoCompte.component';
 
 const routes: Routes = [ {path: '', component: HomeComponent},
  {path: 'register', component: RegisterComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [ {path: '', component: HomeComponent},
  {path: 'creation/evenement', component: EvenementCreationComponent, canActivate: [AuthGuard]}, 
  {path: 'modification/evenement/:id', component: EvenementCreationComponent, canActivate: [AuthGuard]},
  {path: 'article/:id', component: ArticleComponent},
+ {path: 'infoCompte', component: InfoCompteComponent, canActivate: [AuthGuard]}, 
  {path: 'creation/article', component: ArticleCreationComponent, canActivate: [AuthGuard]},
  {path: 'modification/article/:id', component: ArticleCreationComponent, canActivate: [AuthGuard]}];
 
