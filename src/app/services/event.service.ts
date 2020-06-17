@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Event } from '../objets/event';
+import { Volunteering } from '../objets/volunteering';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +21,9 @@ export class EventService {
   }
   modifyEvent(event: Event): Observable<Event>{
     return this.http.put<Event>('http://127.0.0.1:8080/events/'+event.id, event);
+  }
+  addVolunteer(volunteering: Volunteering, eventId: number): Observable<Volunteering>{
+	console.log('ici');
+	return this.http.post<Volunteering>('http://127.0.0.1:8080/events/'+ eventId +'/addVolunteer', volunteering);
   }
 }

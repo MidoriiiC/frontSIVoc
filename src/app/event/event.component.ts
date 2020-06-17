@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../services/event.service';
+import { AuthenticationService } from '../services/authentication.service';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Event } from '../objets/event';
+import { Volunteering } from '../objets/volunteering';
 import { faMapMarker } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
@@ -21,7 +23,7 @@ export class EventComponent implements OnInit {
   faUser = faUser;
   faClock = faClock;
   faCalendar = faCalendar;
-  constructor(private eventService: EventService, private route: ActivatedRoute,
+  constructor(private eventService: EventService, private authenticationService: AuthenticationService, private route: ActivatedRoute,
       protected sanitizer: DomSanitizer) { }
 
   ngOnInit() {
@@ -39,8 +41,12 @@ export class EventComponent implements OnInit {
       this.urlVideo = this.sanitizer.bypassSecurityTrustResourceUrl(this.event.linkVideo);
   }
 
-  addVolunteer(volunteering){
-	//this.eventService.ajouterVolontaire(volontariat);
+  addVolunteer(volunteering: Volunteering){
+	volunteering.volunteer = this.authenticationService.currentUserValue;
+	console.log('le bouton est bien enclenche');
+	this.eventService.addVolunteer(volunteering, this.event.id).subscribe(data => {
+		console.log(data);
+	});
   }
 
 }
