@@ -1,7 +1,9 @@
 <mat-toolbar color="primary">
-  <mat-toolbar-row class="flexSpaceBetween"><!--Visiteur-->
-    <a routerLink="/">SIVoc</a>
-    <span class="example-spacer"></span>
+  <mat-toolbar-row class="flexSpaceBetween"><!--*ngIf="Visiteur"-->
+    <span></span>
+    <a routerLink="/"><img src="https://fayrouz.iut.univ-paris8.fr/SOGo/so/glahary/Mail/0/folderLien/3/2/LogoSIVoc.png"
+   alt="Logo de SIVoc" class="center"></a>
+    <!--title-image="width:100%; height: auto;"-->
     <div>
 	  <span *ngIf="authenticationService.currentUserValue">{{authenticationService.currentUserValue.nom}}</span>
       <button mat-raised-button color="primary" routerLink="/infoCompte">info</button>
@@ -9,5 +11,99 @@
       <button *ngIf="!authenticationService.currentUserValue" mat-raised-button color="primary" routerLink="/register">Register</button>
       <button *ngIf="authenticationService.currentUserValue" mat-raised-button color="primary" (click)="logout()">Out</button>
     </div>
+
   </mat-toolbar-row>
-</mat-toolbar>
+  <mat-toolbar-row class="flexSpaceBetween"><!--*ngIf="Bénévole"-->
+    <span></span>
+    <div>
+      <img src="https://fayrouz.iut.univ-paris8.fr/SOGo/so/glahary/Mail/0/folderLien/3/2/LogoSIVoc.png"
+        alt="Logo de SIVoc" class="center">
+      <!--title-image="width:100%; height: auto;"-->
+    </div>
+    <div>
+      <a mat-icon-button aria-label="Mail">
+        <fa-icon [icon]="faEnvelope"></fa-icon>
+      </a>
+      <a mat-icon-button aria-label="Calendar">
+        <fa-icon [icon]="faCalendarAlt"></fa-icon>
+      </a>
+      <a mat-icon-button aria-label="Log out">
+        <fa-icon [icon]="faPowerOff"></fa-icon>
+      </a>
+    </div>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="flexSpaceBetween"><!--*ngIf="Candidat"-->
+    <span></span>
+    <div>
+      <img src="https://fayrouz.iut.univ-paris8.fr/SOGo/so/glahary/Mail/0/folderLien/3/2/LogoSIVoc.png"
+        alt="Logo de SIVoc" class="center">
+      <!--title-image="width:100%; height: auto;"-->
+    </div>
+    <div layout-align="end">
+      <a mat-icon-button aria-label="Mail">
+        <fa-icon [icon]="faEnvelope"></fa-icon>
+      </a>
+      <a mat-icon-button aria-label="Learn">
+        <fa-icon [icon]="faGraduationCap"></fa-icon>
+      </a>
+      <a mat-icon-button aria-label="Log out">
+        <fa-icon [icon]="faPowerOff"></fa-icon>
+      </a>
+    </div>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="flexSpaceBetween"><!--*ngIf="Admin"-->
+    <div>
+      <a mat-icon-button aria-label="Parametre">
+        <fa-icon [icon]="faTools"></fa-icon>
+      </a>
+      <a mat-icon-button aria-label="Calendar">
+        <fa-icon [icon]="faCalendarAlt"></fa-icon>
+      </a>
+      <a mat-icon-button aria-label="Liste_Contact">
+        <fa-icon [icon]="faAddressBook"></fa-icon>
+      </a>
+    </div>
+    <div>
+      <img src="https://fayrouz.iut.univ-paris8.fr/SOGo/so/glahary/Mail/0/folderLien/3/2/LogoSIVoc.png"
+        alt="Logo de SIVoc" class="center">
+      <!--title-image="width:100%; height: auto;"-->
+    </div>
+    <div>
+      <a mat-icon-button aria-label="Mail">
+        <fa-icon [icon]="faEnvelope"></fa-icon>
+      </a>
+      <a mat-icon-button aria-label="Learn">
+        <fa-icon [icon]="faGraduationCap"></fa-icon>
+      </a>
+      <a mat-icon-button aria-label="Log out">
+        <fa-icon [icon]="faPowerOff"></fa-icon>
+      </a>
+    </div>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="flexSpaceBetween"><!--*ngIf="Prêtre utilisateur/SV modo"-->
+    <div>
+      <a mat-icon-button aria-label="Calendar">
+        <fa-icon [icon]="faCalendarAlt"></fa-icon>
+      </a>
+      <a mat-icon-button aria-label="Liste_Contact">
+        <fa-icon [icon]="faAddressBook"></fa-icon>
+      </a>
+    </div>
+    <div>
+      <img src="https://fayrouz.iut.univ-paris8.fr/SOGo/so/glahary/Mail/0/folderLien/3/2/LogoSIVoc.png"
+        alt="Logo de SIVoc" class="center">
+      <!--title-image="width:100%; height: auto;"-->
+    </div>
+    <div>
+      <a mat-icon-button aria-label="Mail">
+        <fa-icon [icon]="faEnvelope"></fa-icon>
+      </a>
+      <a mat-icon-button aria-label="Learn">
+        <fa-icon [icon]="faGraduationCap"></fa-icon>
+      </a>
+      <a mat-icon-button aria-label="Log out">
+        <fa-icon [icon]="faPowerOff"></fa-icon>
+      </a>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar><!--ng generate component NOM-->

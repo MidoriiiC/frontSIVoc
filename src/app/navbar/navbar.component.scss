@@ -1,7 +1,9 @@
-.example-spacer {
-  flex: 1 1 auto;
-}
-
-.boutonNavbar{
-  display:inline-block;
+.center{
+    margin: auto auto;
+  }
+  .flexSpaceBetween {
+    justify-content: space-between;
+  }
+  .flexExpand {
+    flex: 1 1 auto;
 }

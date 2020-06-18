@@ -3,6 +3,8 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 import { AlertService } from '../services/alert.service';
+import { faCalendarAlt, faEnvelope, faPowerOff, faGraduationCap, faTools,
+		 faAddressBook } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-navbar',
@@ -11,6 +13,14 @@ import { AlertService } from '../services/alert.service';
 })
 export class NavbarComponent implements OnInit {
     
+  faCalendarAlt = faCalendarAlt;
+  faEnvelope = faEnvelope;
+  faPowerOff = faPowerOff;
+  faGraduationCap = faGraduationCap;
+  faTools = faTools;
+  faAddressBook = faAddressBook;  
+
+
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
