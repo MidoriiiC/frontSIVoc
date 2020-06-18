@@ -16,16 +16,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { EventService } from './services/event.service';
 import { MatCardModule } from '@angular/material/card';
-import {MatGridListModule} from '@angular/material/grid-list'; 
+import { MatGridListModule } from '@angular/material/grid-list';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EventCreationComponent } from './event-creation/event-creation.component';
-import {MatInputModule} from '@angular/material/input'; 
-import {MatDatepickerModule} from '@angular/material/datepicker'; 
-import {MatNativeDateModule} from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { FooterComponent } from './footer/footer.component';
 import { ArticleComponent } from './article/article.component';
 import { ArticleCreationComponent } from './article-creation/article-creation.component';
-import { InfoCompteComponent} from './infoCompte/infoCompte.component';
+import { InfoCompteComponent } from './infoCompte/infoCompte.component';
+import { UsersListComponent } from './usersList/usersList.component';
 
 
 import { appRoutingModule } from './app.routing';
@@ -51,7 +52,8 @@ import { AlertComponent } from './alert/alert.component';
     AlertComponent,
     ArticleComponent,
     ArticleCreationComponent,
-    InfoCompteComponent
+    InfoCompteComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,

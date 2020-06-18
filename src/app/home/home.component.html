@@ -1,11 +1,17 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
   <div class="container">
-    <h2>News</h2>
+    <h2>News
+      <span *ngIf="authenticationService.currentUserValue">
+        <a routerLink="/creation/article" *ngIf="authenticationService.currentUserValue.role==='modérateur'||authenticationService.currentUserValue.role==='administrateur'||authenticationService.currentUserValue.role==='prêtre'" mat-icon-button aria-label="Plus">
+         <fa-icon [icon]="faPlus"></fa-icon>
+        </a>
+      </span>
+    </h2>
     <mat-divider></mat-divider>
     <hr>
   <div>
-    <mat-card 
+    <mat-card
     style="max-height: 525px;
     margin-left: 350px;
     margin-right: 350px;">
@@ -13,11 +19,11 @@
         <mat-card-subtitle>à la une</mat-card-subtitle>
         <mat-card-title>titre</mat-card-title>
       </mat-card-header>
-      <img mat-card-image 
+      <img mat-card-image
       src='https://www.18h39.fr/wp-content/uploads/2019/04/chat-trop-chou-600x420.jpg' alt="">
       <mat-card-content>
         <p style="font-size: 15px;">
-          Ceci est la nouvelle à mettre en avant. 
+          Ceci est la nouvelle à mettre en avant.
           Bon pas vraiment mais il faut que je marque un truc pour dire que ça marche...
         </p>
       </mat-card-content>
@@ -66,13 +72,19 @@
     <img mat-card-image src='frontSIVoc-master/src/assets/chat-trop-chou-600x420.jpg' alt="">
   </div>
   -->
-    
+
     <hr>
 
-    <h2>Evenements</h2>
+    <h2>Evènements
+     <span *ngIf="authenticationService.currentUserValue">
+        <a routerLink="/creation/event" *ngIf="authenticationService.currentUserValue.role==='modérateur'||authenticationService.currentUserValue.role==='administrateur'||authenticationService.currentUserValue.role==='prêtre'" mat-icon-button aria-label="Plus">
+          <fa-icon [icon]="faPlus"></fa-icon>
+        </a>
+      </span>
+    </h2>
     <mat-divider></mat-divider>
     <hr>
-    <mat-card 
+    <mat-card
     style="max-height: 525px;
     margin-left: 350px;
     margin-right: 350px;">
@@ -80,11 +92,11 @@
         <mat-card-subtitle>à la une</mat-card-subtitle>
         <mat-card-title>titre</mat-card-title>
       </mat-card-header>
-      <img mat-card-image 
+      <img mat-card-image
       src='https://www.18h39.fr/wp-content/uploads/2019/04/chat-trop-chou-600x420.jpg' alt="">
       <mat-card-content>
         <p style="font-size: 15px;">
-          Ceci est la nouvelle à mettre en avant. 
+          Ceci est la nouvelle à mettre en avant.
           Bon pas vraiment mais il faut que je marque un truc pour dire que ça marche...
         </p>
       </mat-card-content>
@@ -97,14 +109,14 @@
     </mat-card>
     <!--
     <mat-grid-list cols="2" rowHeight="275px">
-      <mat-grid-tile 
+      <mat-grid-tile
       *ngFor="let tile of tiles">
-        {{tile.text}} 
+        {{tile.text}}
       </mat-grid-tile>
-      <mat-grid-tile 
+      <mat-grid-tile
       *ngFor="let evenement of evenements"
       *ngIf="evenement.date>=date.today">
-        {{evenement.text}} 
+        {{evenement.text}}
       </mat-grid-tile>
       <mat-grid-tile>Ce</mat-grid-tile>
       <mat-grid-tile>sont</mat-grid-tile>
@@ -113,16 +125,16 @@
       <mat-grid-tile>test</mat-grid-tile>
     </mat-grid-list>
     -->
-    
+
 
   </div>
 </div>
 <div class="container">
 
   <hr>
-	<a routerLink="/creation/event">Creer un event</a><br />
-	<a routerLink="/creation/article">Creer un article</a><br />
 	<a routerLink="/modification/event/1">Modifier un event</a><br />
 	<a routerLink="/modification/article/1">Modifier un article</a><br />
 	<a routerLink="/event/16">Evenement 16</a><br />
-	<a routerLink="/article/1">Article 1</a>
+  <a routerLink="/article/1">Article 1</a>
+  <button mat-raised-button color="primary" (click)="admin()"> créer un admin /mdp</button>
+  <button mat-raised-button color="primary" (click)="moder()"> créer un modo /mdp</button>

@@ -1,24 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-
-import { FormControl } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Event } from '../objets/event';
-import { EventService } from '../services/event.service';
 import { Utilisateur } from '../objets/utilisateur';
 import { AuthenticationService } from '../services/authentication.service';
 import { UtilisateurService } from '../services/utilisateur.service';
 import { first } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-info-compte',
-  templateUrl: './infoCompte.component.html',
-  styleUrls: ['./infoCompte.component.scss']
+  templateUrl: './usersList.component.html',
+  styleUrls: ['./usersList.component.scss']
 })
 
-export class InfoCompteComponent implements OnInit {
+export class UsersListComponent implements OnInit {
   currentUser: Utilisateur;
   user : Utilisateur;
   users : Array <Utilisateur> = [];
+  faPlus = faPlus;
 
   constructor(
     protected authenticationService: AuthenticationService,
@@ -30,24 +28,17 @@ export class InfoCompteComponent implements OnInit {
       this.router.navigate(['/']);
   }
 }ngOnInit() {
-  if(this.currentUser.role==="ROLE_MODERATEUR")
     this.loadAllUsers();
   }
-
-    private nom = new FormControl('');
-    private lieu = new FormControl('');
-    private organisateur = new FormControl('');
-
-    private mode: number;
-    protected event = new Event();
-    protected titre = '';
 
   deleteUser(id: number) {
     this.utilisateurService.delete(id)
       .pipe(first())
       .subscribe(() => this.loadAllUsers());
   }
+  createUser(){
 
+  }
   modifyUser(id: number) {
 
     //this.utilisateurService.modifierUtilisateur(id) //veut un user

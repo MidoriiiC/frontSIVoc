@@ -26,11 +26,11 @@ export class ArticleCreationComponent implements OnInit {
     if (!this.route.snapshot.paramMap.get('id')) {
       this.mode = 0;
       console.log('creation');
-      this.titre = 'Création d\'évènement'
+      this.titre = 'Création d\'un article'
     } else {
       this.mode = 1;
       this.getArticle();
-      console.log('edition');
+      console.log('édition');
     }
    }
 

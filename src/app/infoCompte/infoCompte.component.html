@@ -1,8 +1,9 @@
-<h1>Bonjour {{currentUser.prenom}}!</h1>
-<h3>Voici les infos enregistrées de ton compte:</h3>
-
 
 <div class="principal">
+
+  <h1>Bonjour {{currentUser.prenom}}!</h1>
+  <h3>Voici les infos enregistrées de ton compte:</h3>
+
     <span> Nom: {{currentUser.nom}} ,</span><br/>
     <span> Prenom: {{currentUser.prenom}} ,</span><br/>
     <span> Id: {{currentUser.id}} ,</span><br/>
@@ -12,13 +13,18 @@
     <span> Role: {{currentUser.role}}</span><br/>
 
     <br/>
-    <span>    - - - - - - - - - - - - - - -</span>
+    <div *ngIf="authenticationService.currentUserValue.role!=='ROLE_UTILISATEUR'">
+      <span>    - - - - - - - - - - - - - - -</span>
 
-    <ul>
+      <h3>Liste des utilisateurs:</h3>
+
+      <ul>
         <li *ngFor="let user of users">
-            {{user.username}} ({{user.firstName}} {{user.lastName}}) {{user.role}}
-            - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+            ({{user.prenom}} {{user.nom}}) {{user.role}}
+            <a (click)="modifyUser(user.id)" class="text-danger">Modifier</a>
+            - <a (click)="deleteUser(user.id)" class="text-danger">Supprimer</a>
         </li>
-    </ul>
-
-</div>
+      </ul>
+    </div>
+    <br/>
+  </div>
