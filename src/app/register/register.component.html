@@ -2,28 +2,28 @@
 	<mat-card-title>
 		{{titre}}
 	</mat-card-title>
-	<mat-card-content class="formulaire">
+	<mat-card-content [formGroup]="registerForm" class="form">
 
 		<mat-form-field class="champ">
     		<mat-label>Nom</mat-label>
-			<input matInput type="text" class="form-control" value="{{utilisateur.nom}}" [formControl]="nom" />
+			<input matInput type="text" class="form-control" value="" formControlName="name" />
 		</mat-form-field><br />
 
 		<mat-form-field class="champ">
 			<mat-label>Prénom</mat-label>
-		<input matInput type="text" class="form-control" value="{{utilisateur.prenom}}" [formControl]="prenom" />
+		<input matInput type="text" class="form-control" value="" formControlName="firstname" />
 		</mat-form-field><br />
 
 		<mat-form-field class="champ">
 			<mat-label>Email</mat-label>
-		<input matInput type="text" class="form-control" value="{{utilisateur.email}}" [formControl]="email" />
+		<input matInput type="text" class="form-control" value="" formControlName="email" />
 		</mat-form-field><br />
 
 		<mat-form-field class="champ">
 			<mat-label>Mot de passe</mat-label>
-			<input matInput type="password" class="form-control" value="{{utilisateur.mdp}}" [formControl]="mdp" />
+			<input matInput type="password" class="form-control" value="" formControlName="password" />
 		</mat-form-field><br />
-		
-		<button mat-flat-button color="primary" (click)="creer()">Créer le compte</button>
+
+		<button mat-flat-button color="primary" (click)="createAccount()">Créer le compte</button>
 	</mat-card-content>
 </mat-card>

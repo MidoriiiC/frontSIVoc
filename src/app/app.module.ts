@@ -25,7 +25,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { FooterComponent } from './footer/footer.component';
 import { ArticleComponent } from './article/article.component';
 import { ArticleCreationComponent } from './article-creation/article-creation.component';
-import { InfoCompteComponent } from './infoCompte/infoCompte.component';
+import { InfoAccountComponent } from './infoAccount/infoAccount.component';
 import { UsersListComponent } from './usersList/usersList.component';
 
 
@@ -52,7 +52,7 @@ import { AlertComponent } from './alert/alert.component';
     AlertComponent,
     ArticleComponent,
     ArticleCreationComponent,
-    InfoCompteComponent,
+    InfoAccountComponent,
     UsersListComponent
   ],
   imports: [

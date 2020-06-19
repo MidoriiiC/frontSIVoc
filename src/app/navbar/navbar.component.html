@@ -1,13 +1,13 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row class="flexSpaceBetween"><!--*ngIf="Visiteur"-->
     <div *ngIf="authenticationService.currentUserValue">
-    <a *ngIf="authenticationService.currentUserValue.role==='administrateur'" mat-icon-button aria-label="Parametre">
+    <a *ngIf="authenticationService.currentUserValue.authority==='administrateur'" mat-icon-button aria-label="Parametre">
       <fa-icon [icon]="faTools"></fa-icon>
     </a>
-    <a mat-icon-button aria-label="Calendar" *ngIf="authenticationService.currentUserValue.role==='modérateur'||authenticationService.currentUserValue.role==='administrateur'||authenticationService.currentUserValue.role==='prêtre'">
+    <a mat-icon-button aria-label="Calendar" *ngIf="authenticationService.currentUserValue.authority==='modérateur'||authenticationService.currentUserValue.authority==='administrateur'||authenticationService.currentUserValue.authority==='prêtre'">
       <fa-icon [icon]="faCalendarAlt" ></fa-icon>
     </a>
-    <a mat-icon-button routerLink="/users" aria-label="Liste_Contact" *ngIf="authenticationService.currentUserValue.role==='modérateur'||authenticationService.currentUserValue.role==='administrateur'||authenticationService.currentUserValue.role==='prêtre'">
+    <a mat-icon-button routerLink="/users" aria-label="Liste_Contact" *ngIf="authenticationService.currentUserValue.authority==='modérateur'||authenticationService.currentUserValue.authority==='administrateur'||authenticationService.currentUserValue.authority==='prêtre'">
       <fa-icon [icon]="faAddressBook"></fa-icon>
     </a>
   </div>
@@ -17,14 +17,14 @@
     <!--title-image="width:100%; height: auto;"-->
 
     <div *ngIf="authenticationService.currentUserValue">
-      <a class="login" routerLink="/infoCompte">{{authenticationService.currentUserValue.nom}} </a>
+      <a class="login" routerLink="/infoAccount">{{authenticationService.currentUserValue.name}} </a>
       <a mat-icon-button aria-label="Mail">
         <fa-icon [icon]="faEnvelope"></fa-icon>
       </a>
-      <a mat-icon-button aria-label="Calendar" *ngIf="authenticationService.currentUserValue.role==='bénévole'">
+      <a mat-icon-button aria-label="Calendar" *ngIf="authenticationService.currentUserValue.authority==='bénévole'">
         <fa-icon [icon]="faCalendarAlt"></fa-icon>
       </a>
-      <a mat-icon-button aria-label="Learn" *ngIf="authenticationService.currentUserValue.role!=='bénévole'">
+      <a mat-icon-button aria-label="Learn" *ngIf="authenticationService.currentUserValue.authority!=='bénévole'">
         <fa-icon [icon]="faGraduationCap"></fa-icon>
       </a>
       <a mat-icon-button (click)="logout()" aria-label="Log out">

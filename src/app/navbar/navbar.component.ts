@@ -12,13 +12,13 @@ import { faCalendarAlt, faEnvelope, faPowerOff, faGraduationCap, faTools,
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-    
+
   faCalendarAlt = faCalendarAlt;
   faEnvelope = faEnvelope;
   faPowerOff = faPowerOff;
   faGraduationCap = faGraduationCap;
   faTools = faTools;
-  faAddressBook = faAddressBook;  
+  faAddressBook = faAddressBook;
 
 
   constructor(
@@ -39,7 +39,6 @@ export class NavbarComponent implements OnInit {
 
   logout(){
     if(localStorage.getItem('currentUser')!=null)
-      console.log("déco enclenchée")
-    this.authenticationService.logout();
+      this.authenticationService.logout();
   }
 }

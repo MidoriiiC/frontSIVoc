@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Utilisateur } from '../objets/utilisateur';
+import { User } from '../objets/user';
 import { AuthenticationService } from '../services/authentication.service';
-import { UtilisateurService } from '../services/utilisateur.service';
+import { UserService } from '../services/user.service';
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -13,15 +13,15 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 })
 
 export class UsersListComponent implements OnInit {
-  currentUser: Utilisateur;
-  user : Utilisateur;
-  users : Array <Utilisateur> = [];
+  currentUser: User;
+  user : User;
+  users : Array <User> = [];
   faPlus = faPlus;
 
   constructor(
     protected authenticationService: AuthenticationService,
     private router: Router,
-    private utilisateurService: UtilisateurService
+    private userService: UserService
 ) {
     this.currentUser = this.authenticationService.currentUserValue;
     if (!this.authenticationService.currentUserValue) {
@@ -32,7 +32,7 @@ export class UsersListComponent implements OnInit {
   }
 
   deleteUser(id: number) {
-    this.utilisateurService.delete(id)
+    this.userService.delete(id)
       .pipe(first())
       .subscribe(() => this.loadAllUsers());
   }
@@ -41,13 +41,13 @@ export class UsersListComponent implements OnInit {
   }
   modifyUser(id: number) {
 
-    //this.utilisateurService.modifierUtilisateur(id) //veut un user
+    //this.userService.modifierUser(id) //veut un user
       //.pipe(first())
       //.subscribe(() => this.loadAllUsers());
   }
 
   private loadAllUsers() {
-    this.utilisateurService.getAll()
+    this.userService.getAll()
       .pipe(first())
       .subscribe(users => this.users = users);
   }

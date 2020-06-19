@@ -1,14 +1,13 @@
 
 <div class="principal">
-
-  <h1>Bonjour {{currentUser.prenom}}!</h1>
+  <br/>
   <h3>Voici la liste des utilisateurs du site: <a routerLink="/creation/article" mat-icon-button aria-label="Plus">
     <fa-icon [icon]="faPlus"></fa-icon>
    </a></h3>
 
       <ul>
         <li *ngFor="let user of users">
-          {{user.prenom}} {{user.nom}},  {{user.role}}
+          {{user.firstname}} {{user.name}},  {{user.authority}}
             <a (click)="modifyUser(user.id)" class="text-danger">Modifier</a>
             - <a (click)="deleteUser(user.id)" class="text-danger">Supprimer</a>
         </li>

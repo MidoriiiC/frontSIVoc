@@ -1,9 +1,9 @@
-import { Utilisateur } from './utilisateur';
+import { User } from './user';
 
 export class Volunteering {
 	id: number;
 	label: string;
-	volunteer: Utilisateur;
+	volunteer: User;
 	description: string;
 	scheldule: string;
 }

@@ -6,9 +6,8 @@ import { Observable, of, } from 'rxjs';
 export class BackendInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const { url, method, headers, body } = request;
-        console.log("requête: "+ request);
         // wrap in delayed observable to simulate server api call
         return of(null);
- 
+
     }
 }

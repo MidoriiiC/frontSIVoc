@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Utilisateur } from '../objets/utilisateur';
-import { UtilisateurService } from '../services/utilisateur.service';
+import { User } from '../objets/user';
+import { UserService } from '../services/user.service';
 import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
@@ -11,87 +11,48 @@ import { AuthenticationService } from '../services/authentication.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  registerForm: FormGroup;
+  loading = false;
+  submitted = false;
+  returnUrl: string;
+  titre='Inscription';
+    protected user = new User();
 
-    registerForm: FormGroup; 
-    private nom = new FormControl('');
-    private prenom = new FormControl('');
-    private email = new FormControl('');
-    private mdp = new FormControl('');
-
-    private mode: number;
-    protected utilisateur = new Utilisateur();
-    protected titre = '';
-    
     constructor(
-      private utilisateurService: UtilisateurService,
+      private userService: UserService,
       private route: ActivatedRoute,
       private formBuilder: FormBuilder,
       private authenticationService: AuthenticationService,
       private router: Router
       ) {
-
-      if (!this.route.snapshot.paramMap.get('id')) {
-        this.mode = 0;
-        console.log('creation');
-        this.titre = 'Création de compte'
+        // redirect to home if already logged in
         if (this.authenticationService.currentUserValue) {
           this.router.navigate(['/']);
       }
-      } else {
-        this.mode = 1;
-        this.getUtilisateur();
-        console.log('édition');
-      }
      }
-  
-    creer(){
+     ngOnInit() {
+      this.registerForm = this.formBuilder.group({
+        name: ['', Validators.required],
+        firstname: ['', Validators.required],
+        email: ['', Validators.required],
+        password: ['', Validators.required]
+    });
+    }
 
-      
-      
-      let aCreer = new Utilisateur();
-      aCreer.nom = this.nom.value;
-      aCreer.prenom = this.prenom.value;
-      aCreer.email = this.email.value;
-      aCreer.mdp = this.mdp.value;
-      console.log(this.mdp.value)
-      console.log(aCreer.nom + " et " + aCreer.mdp);
-      if (this.mode === 0) {
-        this.utilisateurService.creerUtilisateur(aCreer).subscribe(data => {
+    get f() { return this.registerForm.controls; }
+
+    createAccount(){
+      let userCreation = new User();
+      userCreation.name = this.f.name.value;
+      userCreation.firstname = this.f.firstname.value;
+      userCreation.email = this.f.email.value;
+      userCreation.password = this.f.password.value;
+        this.userService.createUser(userCreation)
+        .subscribe(data => {
           this.router.navigate(['/'])
         }, err => {
           // TODO une fois que les erreurs seront gérées dans le back (prochaine phase)
           console.log("erreur d'enregistrement");
         });
-      } else {
-        aCreer.id = this.utilisateur.id;
-        this.utilisateurService.modifierUtilisateur(aCreer).subscribe(data => {
-          this.router.navigate(['/utilisateur/' + data.id])
-        }, err => {
-          // TODO une fois que les erreurs seront gérées dans le back (prochaine phase)
-        });
-      }
     }
-  
-    getUtilisateur(){
-      this.utilisateurService.getUtilisateurParId(Number.parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(data =>
-      {
-        this.utilisateur = data; this.titre = 'Modifier ' + this.utilisateur.nom;
-        this.nom.setValue(this.utilisateur.nom);
-        this.prenom.setValue(this.utilisateur.prenom);
-        this.email.setValue(this.utilisateur.email);
-        this.mdp.setValue(this.utilisateur.mdp);
-        console.log(data);
-      });
-    }
-  
-    ngOnInit() {
-      this.registerForm = this.formBuilder.group({
-        nom: ['', Validators.required],
-        prenom: ['', Validators.required],
-        email: ['', Validators.required],
-        mdp: ['', Validators.required]
-    });
-
-    }
-
 }

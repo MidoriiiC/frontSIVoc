@@ -3,6 +3,7 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/c
 import { Observable } from 'rxjs';
 
 import { AuthenticationService } from '../services/authentication.service';
+import { stringify } from 'querystring';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
@@ -10,15 +11,17 @@ export class JwtInterceptor implements HttpInterceptor {
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // add authorization header with jwt token if available
+        console.log("interceptor");
         let currentUser = this.authenticationService.currentUserValue;
-        console.log("test pour changer l'entête")
-        if (currentUser && currentUser.token) {
-        //if (currentUser && currentUser.nom && currentUser.mdp){
-            console.log("change l'entête de la requête avec le token")
-            request = request.clone({
-                setHeaders: { 
-                    Authorization: `Bearer ${currentUser.token}`
-                    //Authorization: `Basic ${currentUser.nom,currentUser.mdp}`
+        //if (currentUser && currentUser.token) {
+        if (currentUser && currentUser.name && currentUser.password){
+          console.log("test pour changer l'entête")
+          request = request.clone({
+                setHeaders: {
+                  user : currentUser.name,
+                  password : currentUser.password,
+                  //Authorization: `Bearer ${currentUser.token}`
+                  //Authorization: `Basic ${currentUser.name}:${currentUser.password}`
                 }
             });
         }
