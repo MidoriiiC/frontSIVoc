@@ -28,34 +28,32 @@ export class EventCreationComponent implements OnInit {
   constructor(private eventService: EventService, private route: ActivatedRoute, private router: Router) {
     if (!this.route.snapshot.paramMap.get('id')) {
       this.mode = 0;
-      console.log('creation');
       this.titre = 'Création d\'évènement'
     } else {
       this.mode = 1;
       this.getEvent();
-      console.log('edition');
     }
    }
 
-  creer(){
-    let aCreer = new Event();
-    aCreer.name = this.name.value;
-    aCreer.contentArticle = this.contentArticle.value;
-    aCreer.image = this.image.value;
-    aCreer.linkVideo = this.linkVideo.value;
-    aCreer.date = this.date.value;
-    aCreer.hour = this.hour.value;
-    aCreer.organizer = this.organizer.value;
-    aCreer.place = this.place.value;
+  create(){
+    let toCreate = new Event();
+    toCreate.name = this.name.value;
+    toCreate.contentArticle = this.contentArticle.value;
+    toCreate.image = this.image.value;
+    toCreate.linkVideo = this.linkVideo.value;
+    toCreate.date = this.date.value;
+    toCreate.hour = this.hour.value;
+    toCreate.organizer = this.organizer.value;
+    toCreate.place = this.place.value;
     if (this.mode === 0) {
-      this.eventService.createEvent(aCreer).subscribe(data => {
+      this.eventService.createEvent(toCreate).subscribe(data => {
         this.router.navigate(['/event/' + data.id])
       }, err => {
         // TODO une fois que les erreurs seront gérées dans le back (prochaine phase)
       });
     } else {
-      aCreer.id = this.event.id;
-      this.eventService.modifyEvent(aCreer).subscribe(data => {
+      toCreate.id = this.event.id;
+      this.eventService.modifyEvent(toCreate).subscribe(data => {
         this.router.navigate(['/event/' + data.id])
       }, err => {
         // TODO une fois que les erreurs seront gérées dans le back (prochaine phase)

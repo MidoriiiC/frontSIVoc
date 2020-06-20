@@ -39,8 +39,21 @@
 	</mat-card-content>
 	<div *ngIf="event.volunteerings">
 		<ul>
+			<li>
+				<mat-form-field class="champ">
+					<input matInput type="text" [formControl]="labelVolunteering" />
+				</mat-form-field><br />
+				<mat-form-field class="champ">
+					<input matInput type="text" [formControl]="descriptionVolunteering" />
+				</mat-form-field><br />
+				<mat-form-field class="champ">
+					<input matInput type="text" [formControl]="schelduleVolunteering" />
+				</mat-form-field><br />
+				<button mat-flat-button color="primary" (click)="createVolunteering()">Créer le volontariat</button>
+
+			</li>
 			<li *ngFor="let v of event.volunteerings">
-				<span *ngIf="v.volunteer">{{v.label}}: {{v.volunteer.nom}}</span>
+				<span *ngIf="v.volunteer">{{v.label}}: {{v.volunteer.name}}</span>
 				<span *ngIf="!v.volunteer">{{v.label}}: <button (click)="addVolunteer(v)">Se proposer comme volontaire</button></span>
 			</li>
 		</ul>

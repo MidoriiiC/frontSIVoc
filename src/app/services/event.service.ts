@@ -22,8 +22,10 @@ export class EventService {
   modifyEvent(event: Event): Observable<Event>{
     return this.http.put<Event>('http://127.0.0.1:8080/events/'+event.id, event);
   }
-  addVolunteer(volunteering: Volunteering, eventId: number): Observable<Volunteering>{
-	console.log('ici');
-	return this.http.post<Volunteering>('http://127.0.0.1:8080/events/'+ eventId +'/addVolunteer', volunteering);
+  modifyVolunteering(volunteering: Volunteering, eventId: number): Observable<Volunteering>{
+	return this.http.put<Volunteering>('http://127.0.0.1:8080/events/'+ eventId + '/modifyVolunteering', volunteering);
+  }
+  addVolunteering(volunteering: Volunteering, eventId: number): Observable<Volunteering>{
+	return this.http.post<Volunteering>('http://127.0.0.1:8080/events/'+ eventId + '/addVolunteering', volunteering);
   }
 }
