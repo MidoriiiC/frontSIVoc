@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
 import { User } from '../objets/user';
 import { AuthenticationService } from '../services/authentication.service';
 import { UserService } from '../services/user.service';
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import {Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-info-compte',
+  selector: 'app-users-list',
   templateUrl: './usersList.component.html',
   styleUrls: ['./usersList.component.scss']
 })
@@ -15,7 +15,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 export class UsersListComponent implements OnInit {
   currentUser: User;
   user : User;
-  users : Array <User> = [];
+  users : Array<User>;
   faPlus = faPlus;
 
   constructor(
@@ -26,8 +26,9 @@ export class UsersListComponent implements OnInit {
     this.currentUser = this.authenticationService.currentUserValue;
     if (!this.authenticationService.currentUserValue) {
       this.router.navigate(['/']);
+    }
   }
-}ngOnInit() {
+  ngOnInit() {
     this.loadAllUsers();
   }
 
@@ -47,7 +48,7 @@ export class UsersListComponent implements OnInit {
   }
 
   private loadAllUsers() {
-    this.userService.getAll()
+    return this.userService.getAll()
       .pipe(first())
       .subscribe(users => this.users = users);
   }

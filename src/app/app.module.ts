@@ -28,7 +28,6 @@ import { ArticleCreationComponent } from './article-creation/article-creation.co
 import { InfoAccountComponent } from './infoAccount/infoAccount.component';
 import { UsersListComponent } from './usersList/usersList.component';
 
-
 import { appRoutingModule } from './app.routing';
 import { JwtInterceptor } from './config/jwt.interceptor';
 import { ErrorInterceptor } from './config/error.interceptor'
