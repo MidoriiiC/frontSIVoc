@@ -27,6 +27,7 @@ export class EventComponent implements OnInit {
   protected labelVolunteering = new FormControl('');
   protected descriptionVolunteering = new FormControl('');
   protected schelduleVolunteering = new FormControl('');
+  protected displayedColumns = ['label', 'description', 'scheldule', 'volunteer'];
 
   constructor(private eventService: EventService, private authenticationService: AuthenticationService, private route: ActivatedRoute,
       protected sanitizer: DomSanitizer) { }
@@ -61,6 +62,10 @@ export class EventComponent implements OnInit {
 	volunteering.scheldule = this.schelduleVolunteering.value;
 	this.eventService.addVolunteering(volunteering, this.event.id).subscribe(data => {
 		this.event.volunteerings.push(volunteering);
+		this.labelVolunteering.setValue('');
+		this.descriptionVolunteering.setValue('');
+		this.schelduleVolunteering.setValue('');
+		this.ngOnInit();
 	});
   }
 

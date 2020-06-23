@@ -38,24 +38,52 @@
 		<iframe mat-card-image *ngIf="event.linkVideo" width="560" height="315" [src]="sanitizer.bypassSecurityTrustResourceUrl(event.linkVideo)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	</mat-card-content>
 	<div *ngIf="event.volunteerings">
-		<ul>
-			<li>
-				<mat-form-field class="champ">
-					<input matInput type="text" [formControl]="labelVolunteering" />
-				</mat-form-field><br />
-				<mat-form-field class="champ">
-					<input matInput type="text" [formControl]="descriptionVolunteering" />
-				</mat-form-field><br />
-				<mat-form-field class="champ">
-					<input matInput type="text" [formControl]="schelduleVolunteering" />
-				</mat-form-field><br />
-				<button mat-flat-button color="primary" (click)="createVolunteering()">Créer le volontariat</button>
 
-			</li>
-			<li *ngFor="let v of event.volunteerings">
-				<span *ngIf="v.volunteer">{{v.label}}: {{v.volunteer.name}}</span>
-				<span *ngIf="!v.volunteer">{{v.label}}: <button (click)="addVolunteer(v)">Se proposer comme volontaire</button></span>
-			</li>
-		</ul>
+
+			<mat-table [dataSource]="event.volunteerings" class="mat-elevation-z8" style="margin-top:2%">
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="label">
+    <mat-header-cell *matHeaderCellDef> Nom </mat-header-cell>
+    <mat-cell *matCellDef="let volunteering"> {{volunteering.label}} </mat-cell>
+    <mat-footer-cell *matFooterCellDef> <mat-form-field >
+					<mat-label>Nom du volontariat</mat-label>
+					<input matInput type="text" [formControl]="labelVolunteering" />
+				</mat-form-field> </mat-footer-cell>
+
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="description">
+    <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+    <mat-cell *matCellDef="let volunteering"> {{volunteering.description}} </mat-cell>
+	<mat-footer-cell *matFooterCellDef> <mat-form-field >
+				<mat-label>Description du volontariat</mat-label>
+					<input matInput type="text" [formControl]="descriptionVolunteering" />
+				</mat-form-field> </mat-footer-cell>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="scheldule">
+    <mat-header-cell *matHeaderCellDef> Horaire </mat-header-cell>
+    <mat-cell *matCellDef="let volunteering"> {{volunteering.scheldule}} </mat-cell>
+	<mat-footer-cell *matFooterCellDef> <mat-form-field >
+				<mat-label>Horaire du volontariat</mat-label>
+					<input matInput type="text" [formControl]="schelduleVolunteering" />
+				</mat-form-field> </mat-footer-cell>
+  </ng-container>
+
+   <ng-container matColumnDef="volunteer" >
+    <mat-header-cell *matHeaderCellDef> Volontaire </mat-header-cell>
+    <mat-cell *matCellDef="let volunteering"> <div *ngIf="volunteering.volunteer">{{volunteering.volunteer.name}}</div>
+				<div *ngIf="!volunteering.volunteer"><button mat-flat-button color="primary" (click)="addVolunteer(volunteering)">Se proposer comme volontaire</button></div> </mat-cell>
+	<mat-footer-cell *matFooterCellDef><button mat-flat-button color="primary" (click)="createVolunteering()">Créer le volontariat</button>
+</mat-footer-cell>  
+</ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  <mat-footer-row *matFooterRowDef="displayedColumns"></mat-footer-row>
+</mat-table>
 	</div>
 </mat-card>

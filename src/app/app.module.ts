@@ -28,6 +28,9 @@ import { ArticleCreationComponent } from './article-creation/article-creation.co
 import { InfoAccountComponent } from './infoAccount/infoAccount.component';
 import { UsersListComponent } from './usersList/usersList.component';
 
+
+import {MatTableModule} from '@angular/material/table'; 
+
 import { appRoutingModule } from './app.routing';
 import { JwtInterceptor } from './config/jwt.interceptor';
 import { ErrorInterceptor } from './config/error.interceptor'
@@ -73,7 +76,8 @@ import { AlertComponent } from './alert/alert.component';
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
-    appRoutingModule
+    appRoutingModule, 
+	MatTableModule
   ],
   providers: [
     EventService,
