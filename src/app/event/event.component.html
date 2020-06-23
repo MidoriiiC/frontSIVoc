@@ -1,5 +1,5 @@
 <mat-card *ngIf="event" class="mainCard">
-	<mat-card-title>{{event.name}}</mat-card-title>	
+	<mat-card-title>{{event.name}} <a routerLink="/modification/event/{{event.id}}"><fa-icon [icon]="faEdit"></fa-icon></a></mat-card-title>	
 	<img *ngIf="event.image" height="300px" src="{{event.image}}" alt="Image indisponible" />
 	<mat-grid-list cols="4" rowHeight="32px" class="infos">
 		<mat-card-subtitle>

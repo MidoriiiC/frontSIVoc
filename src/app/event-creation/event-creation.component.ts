@@ -34,13 +34,22 @@ export class EventCreationComponent implements OnInit {
       this.getEvent();
     }
    }
+  
+  formatYoutubeLink(videoLink: string){
+	console.log('dans le reformatage '+videoLink);
+	if(!videoLink) return null;
+	else if(videoLink.indexOf('.be/')!=-1) return 'https://www.youtube.com/embed/'+videoLink.substring(videoLink.indexOf('.be/')+4, videoLink.length)
+	else if(videoLink.indexOf('?v=')!=-1) return 'https://www.youtube.com/embed/'+videoLink.substring(videoLink.indexOf('?v=')+3, videoLink.length);
+	else if(videoLink.indexOf('.com/embed/')!=-1)return videoLink;
+	return null;
+  }
 
   create(){
     let toCreate = new Event();
     toCreate.name = this.name.value;
     toCreate.contentArticle = this.contentArticle.value;
     toCreate.image = this.image.value;
-    toCreate.linkVideo = this.linkVideo.value;
+    toCreate.linkVideo = this.formatYoutubeLink(this.linkVideo.value);
     toCreate.date = this.date.value;
     toCreate.hour = this.hour.value;
     toCreate.organizer = this.organizer.value;

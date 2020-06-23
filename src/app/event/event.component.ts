@@ -8,6 +8,7 @@ import { Event } from '../objets/event';
 import { Volunteering } from '../objets/volunteering';
 import { faMapMarker } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
 
@@ -24,6 +25,7 @@ export class EventComponent implements OnInit {
   faUser = faUser;
   faClock = faClock;
   faCalendar = faCalendar;
+  faEdit = faEdit;
   protected labelVolunteering = new FormControl('');
   protected descriptionVolunteering = new FormControl('');
   protected schelduleVolunteering = new FormControl('');

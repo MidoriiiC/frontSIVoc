@@ -5,6 +5,8 @@ import { ArticleService } from '../services/article.service';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-article',
@@ -17,6 +19,7 @@ export class ArticleComponent implements OnInit {
   faUser = faUser;
   faClock = faClock;
   faCalendar = faCalendar;
+  faEdit = faEdit;
 
   constructor(private articleService: ArticleService, private route: ActivatedRoute) { 
 	
