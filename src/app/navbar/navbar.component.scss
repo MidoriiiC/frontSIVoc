@@ -1,18 +1,16 @@
-.center{
-    margin: auto auto;
-  }
-  .flexSpaceBetween {
-    justify-content: space-between;
-  }
-  .flexExpand {
-    flex: 1 1 auto;
+.left{
+	width:33%;
+}
+.middle{
+	width:33%;
+}
+.right{
+	width:33%;
+	text-align:right;
 }
 
-.login{
-  color: white;
-  text-decoration:none;
-}
-
-img{
-  max-width: 40%;
+.image{
+  margin-left:50%;
+  height:10%;
+  width:10%;
 }
