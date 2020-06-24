@@ -1,8 +1,8 @@
 <mat-card class="main">
 	<mat-card-title>
-		{{titre}}
+		{{pageTitle}}
 	</mat-card-title>
-	<mat-card-content *ngIf="mode==0||article" class="formulaire">
+	<mat-card-content *ngIf="mode==0||article">
 		<mat-form-field class="field">
     		<mat-label>Nom de l'article</mat-label>
 			<input matInput type="text" value="{{article.title}}" [formControl]="title" />

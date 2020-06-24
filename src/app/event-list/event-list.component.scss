@@ -11,3 +11,17 @@ img{
 	
 	margin-left:7.5%;
 }
+.list-element{
+	display:inline-block; 
+	border: solid 1px black; 
+	width:50.1%; 
+	vertical-align:50%; 
+	border-radius:10px; 
+	background-color:#eeeceb
+}
+.list-element-text{
+	width:50%; 
+	float:left; 
+	text-align:left; 
+	margin:3%;
+}
