@@ -1,5 +1,7 @@
 <mat-card class="main">
-	<mat-card-title>News</mat-card-title>
+	<a routerLink="/articles">
+		<mat-card-title>News</mat-card-title>
+	</a>
 	<mat-carousel
   		timings="250ms ease-in"
   		[autoplay]="true"
@@ -26,7 +28,9 @@
 			</b>
 		</mat-carousel-slide>
 	</mat-carousel>
-	<mat-card-title style="margin-top:2%;">Évènements</mat-card-title>
+	<a routerLink="/events">
+		<mat-card-title style="margin-top:2%;">Évènements</mat-card-title>
+	</a>
 	<div *ngFor="let e of events" class="list-element">
 		<a routerLink="/event/{{e.id}}">
 			<img *ngIf="e.image" src="{{e.image}}" alt="Image indisponible"/>
