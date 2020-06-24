@@ -14,6 +14,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list'; 
 import { EventService } from './services/event.service';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -27,15 +28,14 @@ import { ArticleComponent } from './article/article.component';
 import { ArticleCreationComponent } from './article-creation/article-creation.component';
 import { InfoAccountComponent } from './infoAccount/infoAccount.component';
 import { UsersListComponent } from './usersList/usersList.component';
-
-
 import {MatTableModule} from '@angular/material/table'; 
-
 import { appRoutingModule } from './app.routing';
 import { JwtInterceptor } from './config/jwt.interceptor';
 import { ErrorInterceptor } from './config/error.interceptor'
 import { LoginComponent } from './login/login.component';
 import { AlertComponent } from './alert/alert.component';
+import { ArticleListComponent } from './article-list/article-list.component';
+import { EventListComponent } from './event-list/event-list.component';
 
 
 @NgModule({
@@ -55,7 +55,9 @@ import { AlertComponent } from './alert/alert.component';
     ArticleComponent,
     ArticleCreationComponent,
     InfoAccountComponent,
-    UsersListComponent
+    UsersListComponent,
+    ArticleListComponent,
+    EventListComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +79,8 @@ import { AlertComponent } from './alert/alert.component';
     ReactiveFormsModule,
     HttpClientModule,
     appRoutingModule, 
-	MatTableModule
+	MatTableModule,
+	MatListModule
   ],
   providers: [
     EventService,

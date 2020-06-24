@@ -1,0 +1,14 @@
+<mat-card class="main">
+	<mat-card-title>Tous les articles</mat-card-title>
+	<mat-card-content *ngIf="articles">
+		
+			<div *ngFor="let a of articles" style="display:inline-block; border: solid 1px black; width:50.1%; vertical-align:50%; border-radius:10px; background-color:#eeeceb">
+  				
+					<a routerLink="/article/{{a.id}}"><img *ngIf="a.illustration" src="{{a.illustration}}" alt="Image indisponible"/>
+					<div style="width:50%; float:left; text-align:left; margin:3%;"><b>{{a.title}}</b><br />
+					<span *ngIf="a.date">Écrit le {{a.date.substring(0, 10)}} </span><span *ngIf="a.hour">à {{a.hour}} </span><span *ngIf="a.author"> par {{a.author}}</span></div>
+					</a>
+			</div>
+
+	</mat-card-content>
+</mat-card>

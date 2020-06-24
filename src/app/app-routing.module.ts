@@ -9,12 +9,16 @@ import { ArticleCreationComponent } from './article-creation/article-creation.co
 import { AuthGuard} from './config/auth.guard';
 import { InfoAccountComponent } from './infoAccount/infoAccount.component';
 import { UsersListComponent } from './usersList/usersList.component';
+import { ArticleListComponent } from './article-list/article-list.component';
+import { EventListComponent } from './event-list/event-list.component';
 
 const routes: Routes = [ {path: '', component: HomeComponent},
  {path: 'register', component: RegisterComponent},
+ {path: 'events', component: EventListComponent},
  {path: 'event/:id', component: EventComponent},
  {path: 'creation/event', component: EventCreationComponent, canActivate: [AuthGuard]},
  {path: 'modification/event/:id', component: EventCreationComponent, canActivate: [AuthGuard]},
+ {path: 'articles', component: ArticleListComponent},
  {path: 'article/:id', component: ArticleComponent},
  {path: 'infoAccount', component: InfoAccountComponent, canActivate: [AuthGuard]},
  {path: 'users', component: UsersListComponent, canActivate: [AuthGuard]},

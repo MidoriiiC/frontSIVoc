@@ -19,4 +19,7 @@ export class ArticleService {
   modifyArticle(article: Article): Observable<Article>{
     return this.http.put<Article>('http://127.0.0.1:8080/articles/'+article.id, article);
   }
+  getArticles(): Observable<any>{
+	return this.http.get('http://127.0.0.1:8080/articles');
+  }
 }
