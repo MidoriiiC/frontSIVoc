@@ -36,6 +36,7 @@ import { LoginComponent } from './login/login.component';
 import { AlertComponent } from './alert/alert.component';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { EventListComponent } from './event-list/event-list.component';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
 
 
 @NgModule({
@@ -80,7 +81,8 @@ import { EventListComponent } from './event-list/event-list.component';
     HttpClientModule,
     appRoutingModule, 
 	MatTableModule,
-	MatListModule
+	MatListModule,
+	MatCarouselModule
   ],
   providers: [
     EventService,

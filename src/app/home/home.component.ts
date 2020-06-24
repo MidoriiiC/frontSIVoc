@@ -4,43 +4,40 @@ import { User } from '../objets/user';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
+import { EventService } from '../services/event.service';
+import { ArticleService } from '../services/article.service';
+import { Article } from '../objets/article';
+import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+	selector: 'app-home',
+	templateUrl: './home.component.html',
+	styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  faPlus = faPlus;
-  constructor(
-    private userService: UserService,
-    protected authenticationService: AuthenticationService,
-    private router: Router
-  ){  }
+	faPlus = faPlus;
+	protected articles : Array<Article>;
+	protected events : Array<Event>;
 
-  ngOnInit() {
-  }
+	constructor(
+		protected authenticationService: AuthenticationService, private articleService: ArticleService, private eventService: EventService
+	) { }
 
-  admin(){
-    console.log("admin a créer");
-    let user = new User;
-    user.name="admin";
-    user.firstname="prenom";
-    user.email="email@admin.fr";
-    user.password="mdp";
-    this.userService.createUserRole(user).subscribe(data =>{
-      this.router.navigate(['/']);
-    })
-  }
-  moder(){
-    console.log("modo a créer");
-    let user = new User;
-    user.name="modo";
-    user.firstname="prenom";
-    user.email="email@modo.fr";
-    user.password="mdp";
-    this.userService.createUserRole(user).subscribe(data =>{
-      this.router.navigate(['/']);
-    })
-  }
+	ngOnInit() {
+		this.getLastsArticles();
+		this.getLastsEvents();
+	}
+
+	getLastsEvents() {
+		this.eventService.getLastsEvents().subscribe(data => {
+			this.events = data; console.log(data)
+		});
+	}
+		getLastsArticles() {
+		this.articleService.getLastsArticles().subscribe(data => {
+			this.articles = data; console.log(data)
+		});
+	}
+	
+
 }

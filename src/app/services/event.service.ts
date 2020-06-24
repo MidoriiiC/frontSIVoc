@@ -13,6 +13,9 @@ export class EventService {
   getEvents (): Observable<any> {
     return this.http.get('http://127.0.0.1:8080/events');
   }
+  getLastsEvents (): Observable<any> {
+    return this.http.get('http://127.0.0.1:8080/events/lasts');
+  }
   getEventById(id: number): Observable<Event> {
     return this.http.get<Event>('http://127.0.0.1:8080/events/'+id);
   }
