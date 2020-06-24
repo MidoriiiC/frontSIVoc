@@ -11,10 +11,9 @@
     <span class="middle">
     <a routerLink="/" ><img class="image" src="assets/images/LogoSIVoc.png"
    alt="Logo de SIVoc"></a></span>
-    <!--title-image="width:100%; height: auto;"-->
 
     <div *ngIf="authenticationService.currentUserValue" class="right">
-      <a style="color:white" routerLink="/infoAccount">{{authenticationService.currentUserValue.name}} </a>
+      <a style="color:white" routerLink="/infoAccount">{{authenticationService.currentUserValue.name}}</a>
       <a mat-icon-button (click)="logout()" aria-label="Log out">
         <fa-icon [icon]="faPowerOff"></fa-icon>
       </a>
@@ -23,3 +22,5 @@
       <button mat-raised-button color="primary" routerLink="/login">Sign in</button>
       <button mat-raised-button color="primary" routerLink="/register">Register</button>
     </div>
+  </mat-toolbar-row>
+</mat-toolbar>
