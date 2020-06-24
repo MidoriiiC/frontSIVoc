@@ -8,6 +8,10 @@
 			<input matInput type="text" value="{{article.title}}" [formControl]="title" />
 		</mat-form-field><br />
 		<mat-form-field class="field">
+			<mat-label>Lien de l'image d'illustration</mat-label>
+		<input matInput type="url" value="{{article.illustration}}" [formControl]="illustration" />
+		</mat-form-field><br />
+		<mat-form-field class="field">
 			<mat-label>Nom de l'auteur</mat-label>
 			<input matInput type="text" value="{{article.author}}" [formControl]="author" />
 		</mat-form-field><br />

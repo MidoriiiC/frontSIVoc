@@ -5,4 +5,5 @@ export class Article {
 	public author: string;
 	public date: string;
 	public hour: string;
+	public illustration: string;
 }

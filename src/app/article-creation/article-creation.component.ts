@@ -17,6 +17,7 @@ export class ArticleCreationComponent implements OnInit {
     protected date = new FormControl('');
     protected hour = new FormControl('');
     protected author = new FormControl('');
+	protected illustration = new FormControl('');
 
     protected mode: number;
     protected article = new Article();
@@ -41,6 +42,7 @@ export class ArticleCreationComponent implements OnInit {
     toCreate.date = this.date.value;
     toCreate.hour = this.hour.value;
     toCreate.author = this.author.value;
+	toCreate.illustration = this.illustration.value;
     if (this.mode === 0) {
       this.articleService.createArticle(toCreate).subscribe(data => {
         this.router.navigate(['/article/' + data.id])
@@ -68,6 +70,7 @@ export class ArticleCreationComponent implements OnInit {
       this.hour.setValue(this.article.hour);
       this.author.setValue(this.article.author);
       this.content.setValue(this.article.content);
+	  this.illustration.setValue(this.article.illustration);
       console.log(data);
     });
   }

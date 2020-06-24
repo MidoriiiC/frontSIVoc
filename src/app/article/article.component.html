@@ -1,5 +1,6 @@
 <mat-card *ngIf="article" class="principal">
 	<mat-card-title>{{article.title}} <a routerLink="/modification/event/{{article.id}}"><fa-icon [icon]="faEdit"></fa-icon></a></mat-card-title>	
+	<img *ngIf="article.illustration" height="300px" src="{{article.illustration}}" alt="Image indisponible" />
 	<mat-grid-list cols="3" rowHeight="32px" class="infos">
 		<mat-card-subtitle>
 		<mat-grid-tile class="info"
