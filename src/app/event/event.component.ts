@@ -50,8 +50,8 @@ export class EventComponent implements OnInit {
 	}
 
 	addVolunteer(volunteering: Volunteering) {
+		volunteering.volunteer = this.authenticationService.currentUserValue;
 		this.eventService.modifyVolunteering(volunteering, this.event.id).subscribe(data => {
-			volunteering.volunteer = this.authenticationService.currentUserValue;
 			this.ngOnInit();
 		});
 	}
