@@ -1,25 +1,25 @@
-<mat-card class="principal">
+<mat-card class="main">
 	<mat-card-title>
 		{{titre}}
 	</mat-card-title>
 	<mat-card-content [formGroup]="registerForm" class="form">
 
-		<mat-form-field class="champ">
+		<mat-form-field class="field">
     		<mat-label>Nom</mat-label>
 			<input matInput type="text" class="form-control" value="" formControlName="name" />
 		</mat-form-field><br />
 
-		<mat-form-field class="champ">
+		<mat-form-field class="field">
 			<mat-label>Prénom</mat-label>
 		<input matInput type="text" class="form-control" value="" formControlName="firstname" />
 		</mat-form-field><br />
 
-		<mat-form-field class="champ">
+		<mat-form-field class="field">
 			<mat-label>Email</mat-label>
 		<input matInput type="text" class="form-control" value="" formControlName="email" />
 		</mat-form-field><br />
 
-		<mat-form-field class="champ">
+		<mat-form-field class="field">
 			<mat-label>Mot de passe</mat-label>
 			<input matInput type="password" class="form-control" value="" formControlName="password" />
 		</mat-form-field><br />

@@ -1,6 +1,6 @@
 <mat-card class="main">
 	<mat-card-title>Tous les évènements</mat-card-title>
-	<a routerLink="/creation/article" *ngIf="authenticationService.isSuperUser()">Créer un article</a>
+	<a routerLink="/creation/event" *ngIf="authenticationService.isSuperUser()">Créer un article</a>
 	<mat-card-content *ngIf="events">
 		<div *ngFor="let e of events" class="list-element">			
 			<a routerLink="/event/{{e.id}}">
