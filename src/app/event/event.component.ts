@@ -13,62 +13,61 @@ import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-event',
-  templateUrl: './event.component.html',
-  styleUrls: ['./event.component.scss']
+	selector: 'app-event',
+	templateUrl: './event.component.html',
+	styleUrls: ['./event.component.scss']
 })
 
 export class EventComponent implements OnInit {
-  protected event: Event;
-  protected urlVideo = null;
-  faMapMarker = faMapMarker;
-  faUser = faUser;
-  faClock = faClock;
-  faCalendar = faCalendar;
-  faEdit = faEdit;
-  protected labelVolunteering = new FormControl('');
-  protected descriptionVolunteering = new FormControl('');
-  protected schelduleVolunteering = new FormControl('');
-  protected displayedColumns = ['label', 'description', 'scheldule', 'volunteer'];
+	protected event: Event;
+	protected urlVideo = null;
+	protected faMapMarker = faMapMarker;
+	protected faUser = faUser;
+	protected faClock = faClock;
+	protected faCalendar = faCalendar;
+	protected faEdit = faEdit;
+	protected labelVolunteering = new FormControl('');
+	protected descriptionVolunteering = new FormControl('');
+	protected schelduleVolunteering = new FormControl('');
+	protected displayedColumns = ['label', 'description', 'scheldule', 'volunteer'];
 
-  constructor(private eventService: EventService, private authenticationService: AuthenticationService, private route: ActivatedRoute,
-      protected sanitizer: DomSanitizer) { }
+	constructor(private eventService: EventService, protected authenticationService: AuthenticationService, private route: ActivatedRoute,
+		protected sanitizer: DomSanitizer) { }
 
-  ngOnInit() {
-    this.getEvent();
-  }
+	ngOnInit() {
+		this.getEvent();
+	}
 
-  getEvent(){
-    this.eventService.getEventById(Number.parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(data =>
-       {
-      this.event = data; this.secureUrlVideo(); console.log(data)
-    });
-  }
+	getEvent() {
+		this.eventService.getEventById(Number.parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(data => {
+			this.event = data; 
+			this.secureUrlVideo();
+		});
+	}
 
-  secureUrlVideo(){
-      this.urlVideo = this.sanitizer.bypassSecurityTrustResourceUrl(this.event.linkVideo);
-  }
+	secureUrlVideo() {
+		this.urlVideo = this.sanitizer.bypassSecurityTrustResourceUrl(this.event.linkVideo);
+	}
 
-  addVolunteer(volunteering: Volunteering){
-	volunteering.volunteer = this.authenticationService.currentUserValue;
-	console.log('le bouton est bien enclenche');
-	this.eventService.modifyVolunteering(volunteering, this.event.id).subscribe(data => {
-		console.log(data);
-	}, err => {console.log(err)});
-  }
+	addVolunteer(volunteering: Volunteering) {
+		this.eventService.modifyVolunteering(volunteering, this.event.id).subscribe(data => {
+			volunteering.volunteer = this.authenticationService.currentUserValue;
+			this.ngOnInit();
+		});
+	}
 
-  createVolunteering(){
-	let volunteering = new Volunteering();
-	volunteering.label = this.labelVolunteering.value;
-	volunteering.description = this.descriptionVolunteering.value;
-	volunteering.scheldule = this.schelduleVolunteering.value;
-	this.eventService.addVolunteering(volunteering, this.event.id).subscribe(data => {
-		this.event.volunteerings.push(volunteering);
-		this.labelVolunteering.setValue('');
-		this.descriptionVolunteering.setValue('');
-		this.schelduleVolunteering.setValue('');
-		this.ngOnInit();
-	});
-  }
+	createVolunteering() {
+		let volunteering = new Volunteering();
+		volunteering.label = this.labelVolunteering.value;
+		volunteering.description = this.descriptionVolunteering.value;
+		volunteering.scheldule = this.schelduleVolunteering.value;
+		this.eventService.addVolunteering(volunteering, this.event.id).subscribe(data => {
+			this.event.volunteerings.push(volunteering);
+			this.labelVolunteering.setValue('');
+			this.descriptionVolunteering.setValue('');
+			this.schelduleVolunteering.setValue('');
+			this.ngOnInit();
+		});
+	}
 
 }

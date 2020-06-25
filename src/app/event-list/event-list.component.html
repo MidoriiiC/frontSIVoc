@@ -1,14 +1,17 @@
 <mat-card class="main">
 	<mat-card-title>Tous les évènements</mat-card-title>
+	<a routerLink="/creation/article" *ngIf="authenticationService.isSuperUser()">Créer un article</a>
 	<mat-card-content *ngIf="events">
-		
-			<div *ngFor="let e of events" style="display:inline-block; border: solid 1px black; width:50.1%; vertical-align:50%; border-radius:10px; background-color:#eeeceb">
-  				
-					<a routerLink="/event/{{e.id}}"><img *ngIf="e.image" src="{{e.image}}" alt="Image indisponible"/>
-					<div style="width:50%; float:left; text-align:left; margin:3%;"><b>{{e.name}}</b><br />
-					<span *ngIf="e.date">Le {{e.date.substring(0, 10)}}, </span><span *ngIf="e.hour"> {{e.hour}} </span><span *ngIf="e.place"> à {{e.place}}</span></div>
-					</a>
-			</div>
-
+		<div *ngFor="let e of events" class="list-element">			
+			<a routerLink="/event/{{e.id}}">
+				<img *ngIf="e.image" src="{{e.image}}" alt="Image indisponible"/>
+				<div class="list-element-text">
+					<b>{{e.name}}</b><br />
+					<span *ngIf="e.date">Le {{e.date.substring(0, 10)}}, </span>
+					<span *ngIf="e.hour"> {{e.hour}} </span>
+					<span *ngIf="e.place"> à {{e.place}}</span>
+				</div>
+			</a>
+		</div>
 	</mat-card-content>
 </mat-card>
