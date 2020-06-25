@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { User } from '../objets/user';
+import { Event } from '../objets/event'
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
@@ -38,6 +39,4 @@ export class HomeComponent implements OnInit {
 			this.articles = data; console.log(data)
 		});
 	}
-	
-
 }

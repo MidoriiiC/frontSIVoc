@@ -13,7 +13,7 @@ export class UserService {
     return this.http.get<User>('http://127.0.0.1:8080/connexion');
   }
   getUserById(id: number): Observable<User> { // non utilisé pour le moment
-    return this.http.get<User>('http://127.0.0.1:8080/evenements/'+id);
+    return this.http.get<User>('http://127.0.0.1:8080/users/'+id);
   }
   createUser(user: User): Observable<User>{
     return this.http.post<User>('http://127.0.0.1:8080/connexion/creation', user);
@@ -25,8 +25,7 @@ export class UserService {
     return this.http.get<Array<User>>('http://127.0.0.1:8080/users');
   }
   delete(id: number){
-    //return this.http.delete<User>('http://127.0.0.1:8080/User/'+User.id
-    return this.http.delete('aaaa');
+    return this.http.delete<any>('http://127.0.0.1:8080/users/'+id);
   }
   getInfoUser ():Observable<any> {
     return this.http.get('http://127.0.0.1:8080/connexion/infos');

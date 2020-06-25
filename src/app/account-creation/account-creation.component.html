@@ -1,0 +1,34 @@
+<mat-card class="main">
+	<mat-card-title>
+		{{titre}}
+	</mat-card-title>
+	<mat-card-content *ngIf="mode==0||account" class="formulaire">
+		<mat-form-field class="field">
+    		<mat-label>Nom</mat-label>
+			<input matInput type="text" value="{{account.name}}" [formControl]="name" />
+		</mat-form-field><br />
+		<mat-form-field class="field">
+			<mat-label>Prénom</mat-label>
+		<input matInput type="url" value="{{account.firstname}}" [formControl]="firstname" />
+		</mat-form-field><br />
+		<mat-form-field class="field">
+			<mat-label>Email</mat-label>
+			<input matInput type="text" value="{{account.email}}" [formControl]="email" />
+		</mat-form-field><br />
+		<mat-form-field class="field">
+  			<mat-label>Mot de passe</mat-label>
+  			<input type="password" matInput value="{{account.password}}" [formControl]="password">
+    </mat-form-field><br />
+
+		<mat-form-field class="field">
+			<mat-label>Statut</mat-label>
+      <mat-select [formControl]="authority">
+        <mat-option *ngFor="let role of roles" [value]="role.value">
+          {{role.viewValue}}
+        </mat-option>
+    </mat-select>
+
+		</mat-form-field><br />
+		<button mat-flat-button color="primary" (click)="create()">Valider</button>
+	</mat-card-content>
+</mat-card>

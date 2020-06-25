@@ -11,6 +11,7 @@ import { InfoAccountComponent } from './infoAccount/infoAccount.component';
 import { UsersListComponent } from './usersList/usersList.component';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { EventListComponent } from './event-list/event-list.component';
+import { AccountCreationComponent } from './account-creation/account-creation.component';
 
 const routes: Routes = [ {path: '', component: HomeComponent},
  {path: 'register', component: RegisterComponent},
@@ -23,6 +24,8 @@ const routes: Routes = [ {path: '', component: HomeComponent},
  {path: 'infoAccount', component: InfoAccountComponent, canActivate: [AuthGuard]},
  {path: 'users', component: UsersListComponent, canActivate: [AuthGuard]},
  {path: 'creation/article', component: ArticleCreationComponent, canActivate: [AuthGuard]},
+ {path: 'creation/user', component: AccountCreationComponent, canActivate: [AuthGuard]},
+ {path: 'modification/user/:id', component: AccountCreationComponent, canActivate: [AuthGuard]},
  {path: 'modification/article/:id', component: ArticleCreationComponent, canActivate: [AuthGuard]}];
 
 @NgModule({

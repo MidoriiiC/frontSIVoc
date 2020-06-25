@@ -1,11 +1,67 @@
 
 <div class="principal">
   <br/>
-  <h3>Voici la liste des utilisateurs du site: <a routerLink="/creation/article" mat-icon-button aria-label="Plus">
-    <fa-icon [icon]="faPlus"></fa-icon>
+  <h3>Voici la liste des utilisateurs du site:
+    <a routerLink="/creation/user" mat-icon-button aria-label="Plus">
+      <fa-icon [icon]="faPlus"></fa-icon>
     </a>
-    </h3>
+  </h3><br/>
+    <mat-table [dataSource]="users" class="mat-elevation-z8" style="margin-top:2%">
 
+      <!-- Name Column -->
+      <ng-container matColumnDef="firstname">
+        <mat-header-cell *matHeaderCellDef> Prénom </mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.firstname}} </mat-cell>
+        <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+      </ng-container>
 
+      <ng-container matColumnDef="username">
+        <mat-header-cell *matHeaderCellDef> Nom </mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.name}} </mat-cell>
+        <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+      </ng-container>
+
+          <!-- Weight Column -->
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef> Email de contact </mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.email}} </mat-cell>
+        <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+      </ng-container>
+
+          <!-- Symbol Column -->
+      <ng-container matColumnDef="authority">
+        <mat-header-cell *matHeaderCellDef> Statut </mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.authority}} </mat-cell>
+        <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="modify" >
+        <mat-header-cell *matHeaderCellDef> Modifier </mat-header-cell>
+        <mat-cell *matCellDef="let user">
+          <div>
+            <a mat-icon-button routerLink="/modification/user/{{user.id}}" aria-label="Log out">
+              <fa-icon [icon]="faPaintBrush"></fa-icon>
+            </a>
+          </div>
+        </mat-cell>
+        <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="delete" >
+        <mat-header-cell *matHeaderCellDef> Supprimer </mat-header-cell>
+        <mat-cell *matCellDef="let user">
+          <div>
+            <a mat-icon-button (click)="deleteUser(user)" aria-label="Log out">
+              <fa-icon [icon]="faTimes"></fa-icon>
+            </a>
+          </div>
+        </mat-cell>
+        <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      <mat-footer-row *matFooterRowDef="displayedColumns"></mat-footer-row>
+    </mat-table>
   <br/>
 </div>

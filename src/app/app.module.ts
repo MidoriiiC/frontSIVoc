@@ -14,7 +14,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
-import {MatListModule} from '@angular/material/list'; 
+import { MatListModule } from '@angular/material/list';
 import { EventService } from './services/event.service';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -27,8 +27,10 @@ import { FooterComponent } from './footer/footer.component';
 import { ArticleComponent } from './article/article.component';
 import { ArticleCreationComponent } from './article-creation/article-creation.component';
 import { InfoAccountComponent } from './infoAccount/infoAccount.component';
+import { AccountCreationComponent } from './account-creation/account-creation.component';
+import { MatSelectModule } from '@angular/material/select';
 import { UsersListComponent } from './usersList/usersList.component';
-import {MatTableModule} from '@angular/material/table'; 
+import { MatTableModule } from '@angular/material/table';
 import { appRoutingModule } from './app.routing';
 import { JwtInterceptor } from './config/jwt.interceptor';
 import { ErrorInterceptor } from './config/error.interceptor'
@@ -58,7 +60,8 @@ import { MatCarouselModule } from '@ngmodule/material-carousel';
     InfoAccountComponent,
     UsersListComponent,
     ArticleListComponent,
-    EventListComponent
+    EventListComponent,
+    AccountCreationComponent
   ],
   imports: [
     BrowserModule,
@@ -79,10 +82,11 @@ import { MatCarouselModule } from '@ngmodule/material-carousel';
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
-    appRoutingModule, 
-	MatTableModule,
-	MatListModule,
-	MatCarouselModule
+    appRoutingModule,
+	  MatTableModule,
+	  MatListModule,
+    MatCarouselModule,
+    MatSelectModule
   ],
   providers: [
     EventService,
